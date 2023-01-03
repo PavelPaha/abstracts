@@ -11,7 +11,7 @@
 \usepackage{fancybox,fancyhdr} 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[R]{Васильев Павел ФТ-104-1}
+\fancyhead[R]{ФТ-104}
 \fancyfoot[R]{\thepage} 
 \fancyhead[L]{алгем}
 
@@ -35,6 +35,8 @@
 \graphicspath{ {images/} }
 \begin{document}
 
+{\usefont{T2A}{cmss}{m}{n}
+\begin{small}
 \section*{Ботаем экзамен по алгему}
 \subsection*{Декартово произведение множеств}
 
@@ -752,7 +754,7 @@ A_2x+B_2y+C_2z+D_2=0
 
 У нас плосоксти пересекаются, поэтому нормальные векторы плоскостей непараллельны.
 
-Общий случай. Прудположим $\displaystyle \frac{A_1}{A_2} \neq \frac{B_1}{B_2}$.
+Общий случай. Предположим $\displaystyle \frac{A_1}{A_2} \neq \frac{B_1}{B_2}$.
  
  Перепишем систему в виде $\begin{cases}
  A_1x+B_1y=-C_1z-D_1,
@@ -1524,7 +1526,7 @@ S(tx) = A(tx) + B(tx) = tA(x) + tB(x) = t(A(x) + B(x))= tS(x)
 \end{matrix}
 \end{equation}
  
-Получается $A+B = B+A, (A+B)+C = A+(B+C)$. Нейторальным элементом по сложению является нулевой оператор O, посколькуу $(A+O)(x) = A(x) + O(x) = A(x) + 0 = A(x)$
+Получается $A+B = B+A, (A+B)+C = A+(B+C)$. Нейтральным элементом по сложению является нулевой оператор O, поскольку $(A+O)(x) = A(x) + O(x) = A(x) + 0 = A(x)$
 
 Обратным по сложению является оператор -A.
 
@@ -1565,7 +1567,8 @@ S(tx) = A(tx) + B(tx) = tA(x) + tB(x) = t(A(x) + B(x))= tS(x)
 \section*{}
 \section*{}
 \section*{}
-
+\end{small}
+}
 \end{document}
 
 
