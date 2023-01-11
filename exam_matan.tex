@@ -1,0 +1,99 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[12pt]{extsizes}
+
+\usepackage[english,russian]{babel}
+\usepackage[left=10mm, top=10mm, right=10mm, bottom=20mm, nohead, nofoot]{geometry}
+\usepackage{amsmath,amsfonts,amssymb} % математический пакет
+\headsep=10mm
+
+\usepackage[most]{tcolorbox} % для управления цветом
+% НАСТРОЙКИ
+%теорема
+\definecolor{theorem-color}{gray}{0.90} % уровень прозрачности (1 - максимум)
+\newtcolorbox{htheorem}{colback=theorem-color,grow to right by=-4mm,grow to left by=-4mm,
+    boxrule=0pt,boxsep=0pt,breakable} % настройки области с изменённым фоном
+
+%определение
+\definecolor{def-color}{gray}{0.98}
+\newtcolorbox{definit}{colback=def-color,grow to right by=-4mm,grow to left by=-4mm,
+    boxrule=0pt,boxsep=0pt,breakable} % настройки области с изменённым фоном
+
+%доказательсвто теоремы
+\definecolor{proof-color}{gray}{0.95} % уровень прозрачности (1 - максимум)
+\newtcolorbox{hproof}{colback=proof-color,grow to right by=-1mm,grow to left by=-1mm,
+    boxrule=0pt,boxsep=0pt,breakable} % настройки области с изменённым фоном
+
+%замечания, следствия
+\definecolor{consectary-color}{gray}{0.95} % уровень прозрачности (1 - максимум)
+\newtcolorbox{cns}{colback=consectary-color,grow to right by=-4mm,grow to left by=-4mm,
+    boxrule=0pt,boxsep=0pt,breakable} % настройки области с изменённым фоном
+
+
+
+\usepackage{fancybox,fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{ФТ-104}
+\fancyfoot[R]{\thepage}
+\fancyhead[L]{мотан}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, allcolors=[RGB]{010 090 200}} % цвет ссылок 
+\newcommand{\lr}[1]{\left({#1}\right)} % команда для скобок
+
+\title{Конспектик к экзамену по матану}
+\author{Васильев Павел}
+%\linespread{1}
+\usepackage{amsmath}
+
+\usepackage{graphicx}
+\usepackage{ifpdf}
+\ifpdf
+\DeclareGraphicsRule{*}{mps}{*}{}
+\fi
+\usepackage{graphicx}
+\usepackage{color}
+\graphicspath{ {images/} }
+
+%\renewcommand{\familydefault}{\sfdefault}
+
+\begin{document}
+
+\section*{Ботаем экзамен по матанализу}
+
+\subsection*{Билет 1. Определение предела функции в точке по Коши и по Гейне, их равносильность}
+
+\begin{itemize}
+\item По Коши: 
+	\begin{equation}
+		\displaystyle a = \lim_{x \rightarrow x_0} f(x) \Leftrightarrow \forall \epsilon > 0 \quad \exists \delta ( \epsilon) > 0 \quad \forall x \in D(f): 0<|x-x_0|< \delta \Rightarrow |f(x) - a| < \epsilon
+	\end{equation}
+	
+\item По Гейне:
+	\begin{equation}
+		\displaystyle a = \lim_{x \rightarrow x_0} f(x) \Leftrightarrow \forall \{ x_n \} \subseteq D(f) \backslash{} \{ x_0 \}: x_n \rightarrow x_0 \Rightarrow f(x_n) \rightarrow a
+	\end{equation}
+\end{itemize}
+
+\begin{htheorem}
+\textbf{Теорема. Коши $\Leftrightarrow$ Гейне}
+\end{htheorem}
+
+\begin{hproof}
+\textbf{Доказательство.}
+
+Пусть $a$ - предел по Гейне, то есть $\displaystyle a = \lim_{x \rightarrow x_0} f(x) \Leftrightarrow \forall \{ x_n \} \subseteq D(f) \backslash{} \{ x_0 \}: x_n \rightarrow x_0 \Rightarrow f(x_n) \rightarrow a$. Хотим $\displaystyle a = \lim_{x \rightarrow x_0} f(x) \Leftrightarrow \forall \epsilon > 0 \quad \exists \delta ( \epsilon) > 0 \quad \forall x \in D(f): 0<|x-x_0|< \delta \Rightarrow |f(x) - a| < \epsilon$.
+
+От противного: пусть $\exists \epsilon > 0 \quad \forall \delta > 0 \quad 0 < |x-x_0| < \delta$ и $|f(x) - a| \geq \epsilon$.
+
+Возьмём $\displaystyle \delta = \frac{1}{2}, \delta = \frac{1}{2}, ..., \delta = \frac{1}{n}, ...$
+
+$\displaystyle |x-x_0| < \frac{1}{n}$ и $|f(x)-a| \geq \epsilon$, то есть $x_n \in U_{\frac{1}{n}}(x_0) \Rightarrow x_n \rightarrow x_0$, но $f(x_n) \nrightarrow a$
+\end{hproof}
+
+
+
+\end{document}
+
