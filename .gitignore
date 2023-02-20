@@ -11,3 +11,9 @@ exam_matan.aux
 exam_matan.log
 exam_matan.out
 exam_matan.synctex.gz
+*.out
+*.bbl
+*.blg
+*.log
+*.aux
+*.gz
