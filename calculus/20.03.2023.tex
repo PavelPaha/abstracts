@@ -1,0 +1,237 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[12pt]{extsizes}
+
+\usepackage[english,russian]{babel}
+\usepackage[left=10mm, top=10mm, right=10mm, bottom=20mm, nohead, nofoot]{geometry}
+\usepackage{amsmath,amsfonts,amssymb} % математический пакет
+\headsep=10mm
+
+\usepackage[most]{tcolorbox} % для управления цветом
+% НАСТРОЙКИ
+%теорема
+\definecolor{theorem-color}{gray}{0.90} % уровень прозрачности (1 - максимум)
+\newtcolorbox{htheorem}{colback=theorem-color,grow to right by=-4mm,grow to left by=-4mm,
+    boxrule=0pt,boxsep=0pt,breakable} % настройки области с изменённым фоном
+
+%определение
+\definecolor{def-color}{gray}{0.98}
+\newtcolorbox{definit}{colback=def-color,grow to right by=-4mm,grow to left by=-4mm,
+    boxrule=0pt,boxsep=0pt,breakable} % настройки области с изменённым фоном
+
+%доказательсвто теоремы
+\definecolor{proof-color}{gray}{0.95} % уровень прозрачности (1 - максимум)
+\newtcolorbox{hproof}{colback=proof-color,grow to right by=-1mm,grow to left by=-1mm,
+    boxrule=0pt,boxsep=0pt,breakable} % настройки области с изменённым фоном
+
+%замечания, следствия
+\definecolor{consectary-color}{gray}{0.95} % уровень прозрачности (1 - максимум)
+\newtcolorbox{cns}{colback=consectary-color,grow to right by=-4mm,grow to left by=-4mm,
+    boxrule=0pt,boxsep=0pt,breakable} % настройки области с изменённым фоном
+
+
+
+\usepackage{fancybox,fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{ФТ-104}
+\fancyfoot[R]{\thepage}
+\fancyhead[L]{Матанализ}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, allcolors=[RGB]{010 090 200}} % цвет ссылок 
+\newcommand{\lr}[1]{\left({#1}\right)} % команда для скобок
+
+\title{Конспектик к экзамену по алгему}
+\author{Васильев Павел}
+%\linespread{1}
+\usepackage{amsmath}
+
+\usepackage{graphicx}
+\usepackage{ifpdf}
+\ifpdf
+\DeclareGraphicsRule{*}{mps}{*}{}
+\fi
+\usepackage{graphicx}
+\usepackage{color}
+\graphicspath{ {images/} }
+
+\begin{document}
+\section*{20.03.2023 Интеграл Римана.}
+
+$a = x_0 < x_1 < ... ,x_{n-1} < x_n = b$
+
+$\lambda_\tau = max(x_j-x_{j-1})$
+
+$\xi_j \in [x_{j-1}, x_j]$
+
+$S(f, \tau, \xi) = \sum_{j=1}^w f(\xi_j) \delta x_j$
+
+$\exists I" \forall \epsilon \quad \exists \delta(\epsilon)>0: \quad \forall \tau \forall \xi \quad (\lambda_\tau \Rightarrow |S(f, \tau \xi) - I| < \epsilon)$
+
+$I = \int_a^b f(x)dx$
+
+Верхняя и нижняя сумма Дарбу:
+
+$\displaystyle \overline{S_\tau} = \sum_{j=1}^n M_j \Delta x_j (M_j = [x_{j-1}, x_j])$
+
+$\displaystyle \underline{S_\tau} = \sum_{j=1}^n M_j \Delta x_j (M_j = [x_{j-1}, x_j])$
+
+
+\begin{htheorem}\textbf{Теорема}. $\forall \tau_1, \tau_2 \underline{S_{\tau_1}} \leq \overline{S_{\tau_2}}$
+\end{htheorem}
+
+\begin{htheorem}\textbf{Следствие}.
+$\underline{S_{\tau}} \leq I_* \leq I^* \leq \overline{S_\tau}$
+\end{htheorem}
+
+\begin{htheorem}\textbf{Теорема}. Пустть $f$ определена на $[a,b]$, $f$ интегрируема на $[a,b] \Leftrightarrow$ $\exists \delta(\epsilon) > 0 \quad \forall \tau \quad (\lambda_\tau < \delta \Rightarrow \overline{S_\tau} - \underline{S_\tau} < \epsilon$
+\end{htheorem}
+
+\begin{hproof}\textbf{Доказательство.}
+\begin{itemize}
+\item $\Rightarrow$.  Пусть $f$ интегрируема на $[a,b]$. По определению интегрируемости, $\displaystyle \exists \delta: \quad	\forall \tau \forall \xi \quad (\lambda_\tau < \delta  \Rightarrow |S(f,  \tau, \xi) - I| < \frac{\epsilon}{3}$
+
+$\displaystyle I - \frac{\epsilon}{3} < S(f, \tau, \xi) < I + \frac{\epsilon}{3}$
+
+Мы хотим получить $\displaystyle I - \frac{\epsilon}{3} < \underline{S_\tau} \leq \overline{S_\tau} < I + \frac{\epsilon}{3}$
+
+Рассмотрим левую часть неравенства $\displaystyle I - \frac{\epsilon}{3} < S(f, \tau, \xi) < I + \frac{\epsilon}{3}$
+ $\displaystyle I - \frac{\epsilon}{3} < S(f, \tau, \xi)$. Возьмём инфимум по $\xi \Rightarrow I - \frac{\epsilon}{3} \leq inf S(f, \tau, \xi) = \underline{S_\tau}$.
+
+$\underline{S_\tau} = \sum_{j=1, x \in [x_{j-1}, x_j]}^w inf f(x) \Delta x_j$
+
+$S(f, \tau, \xi) < I + \frac{\epsilon}{3}$
+
+$\overline{S_\tau} \leq I+\frac{\epsilon}{3} \Rightarrow I - \frac{\epsilon}{3} \leq \underline{S_\tau} \leq \overline{S_\tau} \leq I + \frac{\epsilon}{3}$.
+
+\item $\Leftarrow$. $\underline{S_\tau} \leq I_* \leq I^* \leq \overline{S_\tau}$ (следствие из теоремы)ю
+
+Знаем, что $\forall \epsilon \quad \exists \delta: \forall \tau (\lambda_\tau < \delta \Rightarrow \overline{S_\tau} - \underline{S_\tau} < \epsilon$
+
+$\underline{S_\tau} \leq S_\tau \leq \overline{S_\tau}$
+
+$|S_\tau - I_*| < \epsilon \Rightarrow I_*$ по определению интеграла является интегралом Римана.
+\end{itemize}
+
+\end{hproof}
+
+
+
+\begin{htheorem}\textbf{Следствие}. $f$ интегрируема по Римана на $\displaystyle [a,b] \Rightarrow I_* = I^* = \int_a^b f(x) dx$
+\end{htheorem}
+
+\begin{htheorem}\textbf{Теорема (без доказательства}.
+$f$ интегрируема на $[a,b] \Leftrightarrow I_* = I^*$, и при этом всегда $\displaystyle \int_a^b f(x) dx = I_* = I^*$
+
+
+\end{htheorem}
+
+\subsection*{Некоторые свойства интеграла}
+
+\begin{enumerate}
+\item Аддитивность интеграла: 
+$\displaystyle \int_a^b f(x)dx = \int_a^bf + \int_c^b f, (c \in [a,b])$.
+
+\textbf{Доказательство.} Возьмём произвольное разбиение $\tau$ на $[a,b]$
+
+$c \in [x_{j-1}, x_j]$
+
+Рассмотрим вспомогательное разбиение отрезка $\tau'$ на $[a,c]$ и $\tau''$ на $[c,b]$:
+\begin{itemize}
+\item $\tau': a<x_1<...<x_{j-1}<x$
+\item $\tau'': x<x_j<...<b$
+\end{itemize}
+
+\begin{enumerate}
+\item Пусть $f$ интегрируема на $[a,b]$. Покажем, что $\exists \int_a^c$ и $\exists \int_a^b$.
+
+$f$ интегрируема на $[a,b] \Rightarrow \overline{S_\tau} - \underline{S_\tau} < \epsilon$ для $\tau: \lambda_\tau < \delta(\epsilon)$.
+
+$\overline{S_\tau} \geq \overline{S_{\tau'}} + \overline{S_{\tau''}}$ - очевидно, так как в одной из сумм $sup_[x_j, x_{j+1}] f(x)$ может стать меньше, а больше стать не может.
+
+Также $\underline{S_\tau} \leq \underline{S_{\tau'}} + \underline{S_{\tau''}}$ - тоже очевидно.
+
+Итого $\epsilon > \overline{S_\tau} - \underline{S_\tau} \geq \overline{S_{\tau'}} + \overline{S_{\tau''}} - (\underline{S_{\tau'}} + \underline{S_{\tau''}}) = (\overline{S_{\tau'}} + \underline{S_{\tau'}}) + (\overline{S_{\tau''}} - \underline{S_{\tau''}}) \leq \epsilon$.
+
+Значит $ \overline{S_{\tau'}} + \underline{S_{\tau'}} < \epsilon$ и $\overline{S_{\tau''}} - \underline{S_{\tau''}} < \epsilon$.
+
+\item Пусть $f$ интегрируема на $[a,c]$ и $[c,b]$. Так что есть $\int_a^b f$.
+
+$\overline{S_\tau} = \sum_{k \neq j} + M_j \Delta x_j, \underline{S_\tau} = \sum_{k \neq j} + m_j \Delta x_j$
+
+Ужмём $|f(x)| \leq B, x \in [a,b]$.
+
+Мы хотии получить такую оценку: $\overline{S_\tau} \leq \overline{S_{\tau'}} + \overline{S_{\tau''}} + \text{еще что-то}$.
+
+
+$\displaystyle \overline{S_\tau} - ( \overline{S_{\tau'}} + \overline{S_{\tau''}}) \leq \text{еще что-то}$
+
+$\displaystyle \overline{S_\tau} - ( \overline{S_{\tau'}} + \overline{S_{\tau''}}) = \{  \sum_{k \neq j} \text{сокращается} \} = M_j \Delta x_j - (sup_{[x_{j-1}, c]} f(x) (c-x_{j-1}) + sup_{[c, x_j]} f(x) (x_j - c)) \leq B \Delta x_j + B(c-x_{j-1} + x_j - c) = 2B \Delta x_j \quad \quad (c-x_{j-1} + x_j - c = \Delta x_j)$
+
+$[x_{j-1}, c] \geq -B$
+
+$[c, x_j] \leq -B$
+
+
+$\displaystyle \overline{S_\tau} - ( \overline{S_{\tau'}} + \overline{S_{\tau''}}) \leq 2B \lambda_{\tau}$
+
+А для инфимумов получается $\displaystyle \underline{S_\tau} \geq ( \underline{S_{\tau'}} + \underline{S_{\tau''}}) - 2B \lambda_{\tau}$
+
+$\displaystyle \overline{S_\tau} \leq \overline{S_{\tau'}} + \overline{S_{\tau''}} + 2B \lambda_{\tau}$
+
+$\displaystyle \underline{S_\tau} \geq \underline{S_{\tau'}} + \underline{S_{\tau''}} - 2B \lambda_{\tau}$
+
+$\displaystyle \overline{S_\tau} -\underline{S_\tau} \leq \overline{S_{\tau'}} + \overline{S_{\tau''}} + 2 B \lambda_\tau - \underline{S_{\tau'}} - \underline{S_{\tau''}} + 2B \lambda_{\tau} = (\overline{S_{\tau'}} - \underline{S_{\tau'}}) + (\overline{S_{\tau''}} - \underline{S_{\tau''}}) + 4B \lambda_\tau < \epsilon$
+
+
+$\displaystyle \overline{S_{\tau'}} - \underline{S_{\tau'}} < \frac{\epsilon}{3}$
+
+$\displaystyle \overline{S_{\tau''}} - \underline{S_{\tau''}} < \frac{\epsilon}{3}$
+
+Потому что берем минимальную дельту.
+
+\item Докажем уже наконец-то, что $\displaystyle \int_a^b f = \int_a^c f + \int_c^b f $ (я уже устал техать)
+
+$\displaystyle \left| \int_a^b - \left( \int_a^b + \int_a^b \right) \right| < \epsilon$
+
+$\displaystyle \left| \int_a^b - \left( \int_a^b + \int_a^b \right) + \left( S_{\tau'} + S_{\tau''} \right) - (S_{\tau'} + S_{\tau''}) \right| < \epsilon$
+
+$\displaystyle \left| \int_a^b - \left( \int_a^b + \int_a^b \right) + \left( S_{\tau'} + S_{\tau''} \right) - (S_{\tau'} + S_{\tau''}) \right| \leq \left| \int_a^b -  S_{\tau'} + S_{\tau''} \right| + \left| \int_a^b - S_{\tau'} \right| + \left| \int_c^b - S_{\tau''} \right| <\epsilon$
+
+$\left| \int_a^b -  S_{\tau'} + S_{\tau''} \right| < \frac{\epsilon}{3}$
+
+$ \left| \int_a^b - S_{\tau'} \right| < \frac{\epsilon}{3}$
+
+$\left| \int_c^b - S_{\tau''} \right| < \frac{\epsilon}{3}$
+\end{enumerate}
+
+
+\end{enumerate}
+
+
+\begin{htheorem}\textbf{Утверждение}. Есть интегрируемая функция. Если мы поменяем значения функции в конечном числе точек, то площадь остаентся той же.
+
+\end{htheorem}
+
+\begin{hproof}\textbf{Доказательство.}
+Докажем для одной точки $x_0$.
+
+Давайте поменяем значение $f(x_0)$ на $c$.
+Рассмотрим функуцию $g(x) = \begin{cases} 0, x \neq x_0 \\ f(x_0)+c, x=x_0 \end{cases}$
+
+Покажем, что $\displaystyle \int_a*B g(x)dx = 0$.
+
+Рассмотрим прооизвольное разбиение.
+
+$\displaystyle \forall \tau \quad  |S_\tau| \leq |C - f(x_0)| \cdot \lambda_\tau \rightarrow 0 \Rightarrow \int_a*B g(x)dx = 0$
+
+$\displaystyle \int_a^b (f(x) + g(x)) = \int_a^b f + \int_a^b g =  \int_a^b f + 0 =  \int_a^b f$
+
+\end{hproof}
+
+
+
+
+\end{document}
