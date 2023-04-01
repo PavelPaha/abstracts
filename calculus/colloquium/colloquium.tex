@@ -71,9 +71,9 @@
 \item \sout{Понятие определённого интеграла}
 \item \sout{Интегрируемость суммы функций}
 \item \sout{Ограниченность интегрируемой функции}
-\item Пример ограниченной неинтегрируемой функции
+\item \sout{Пример ограниченной неинтегрируемой функции}
 \item Суммы Дарбу и их свойства. Критерий интегрируемости
-\item Аддитивность интеграла по множеству
+\item \sout{Аддитивность интеграла по множеству}
 \item Интегрируемость непрерывной функции
 \item Интегрируемость монотонной функции
 \item Неизменность интеграла при изменении функции в конечном числе точек
@@ -90,6 +90,8 @@
 \item Вычисление длины дуги
 \item Приближённое вычисление интеграла: методы прямоугольников, трапеций, Симпсона 
 \end{enumerate}
+
+\newpage
 
 \begin{definit}
 \subsection*{Понятие определённого интеграла}
@@ -151,5 +153,102 @@ $$
 \end{hproof}
 
 \end{definit}
+
+
+\begin{definit}
+\subsection*{Пример ограниченной неинтегрируемой функции}
+
+Например, функция Дирихле $D(x)$:
+
+\[
+	D(x) = \begin{cases}
+		1, x \in \mathbb{Q} \\
+		0, x \notin \mathbb{Q}
+	\end{cases}
+\]
+
+\[
+	\forall x \in [a,b] D(x) \text{не интегрируема на} [a, b] \text{так как}
+\]
+
+\begin{enumerate}
+\item $\{ \xi_k \} \subset \mathbb{R} \backslash \mathbb{Q}, f(\xi_k) = 0 \Rightarrow \forall \tau S_\tau = 0$
+\item $\{ \xi_k \} \subset \mathbb{Q}, f(\xi_k) = 1 \Rightarrow \forall \tau S_\tau = \sum \Delta x_k = b - a$
+\end{enumerate}
+\end{definit}
+
+
+
+\begin{definit}
+\subsection*{Аддитивность интеграла по множеству}
+
+
+Пусть $c \in (a, b)$ и функция $f(x)$ определена и интегрируема на отрезке $[a, b]$. Тогда интеграл функции $f(x)$ на отрезке $[a, b]$ равен сумме интегралов функции $f(x)$ на отрезках $[a, c]$ и $[c, b]$:
+
+\[
+\int_{a}^{b} f(x) \, dx = \int_{a}^{c} f(x) \, dx + \int_{c}^{b} f(x) \, dx
+\]
+
+\textbf{Доказательство:}
+
+Поскольку $f(x)$ интегрируема на отрезке $[a, b]$, для любого $\varepsilon > 0$ существует разбиение $\tau = \{a, x_1, \dots, x_{n-1}, b\}$ отрезка $[a, b]$ такое, что верхняя сумма Дарбу $\overline{S_\tau}$ и нижняя сумма Дарбу $\underline{S_\tau}$ удовлетворяют условию:
+
+\[
+\overline{S_\tau} - \underline{S_\tau} < \varepsilon
+\]
+
+Выберем такое разбиение, которое включает точку $c$. Теперь разбиваем $\tau$ на два подмножества $\tau'$ и $\tau''$, соответствующие отрезкам $[a, c]$ и $[c, b]$, так что $\tau = \{x_i \in \tau \mid x_i \leq c\}$ и $\tau'' = \{x_i \in \tau \mid x_i \geq c\}$.
+
+Тогда верхние и нижние суммы Дарбу для $f(x)$ на отрезках $[a, c]$ и $[c, b]$ будут равны $\overline{S_{\tau'}})$ и $\underline{S_{\tau'}}$, а также $\overline{S_{\tau''}})$ и $\underline{S_{\tau'}})$ соответственно.
+
+Поскольку разбиение $\tau$ является объединением $\tau'$ и $\tau''$, имеем:
+
+\[
+\overline{S_{\tau}} = \overline{S_{\tau'}} + \overline{S_{\tau''}}
+\]
+\[
+\underline{S_{\tau}} = \underline{S_{\tau'}} + \underline{S_{\tau''}}
+\]
+
+Из этого следует, что:
+
+\[
+(\overline{S_{\tau'}} + \overline{S_{\tau''}} - (\underline{S_{\tau'}} + \underline{S_{\tau''}}) < \varepsilon
+\]
+
+\[
+(\overline{S_{\tau'}} - \underline{S_{\tau'}}) + (\overline{S_{\tau''}} - \underline{S_{\tau''}}) < \varepsilon
+\]
+
+\[
+\overline{S_{\tau'}} - \underline{S_{\tau'}} < \varepsilon
+\]
+
+\[
+\overline{S_{\tau''}} - \underline{S_{\tau''}} < \varepsilon
+\]
+
+
+
+Докажем уже наконец-то, что $\displaystyle \int_a^b f = \int_a^c f + \int_c^b f $
+
+$\displaystyle \left| \int_a^b - \left( \int_a^b + \int_a^b \right) \right| < \epsilon$
+
+$\displaystyle \left| \int_a^b - \left( \int_a^b + \int_a^b \right) + \left( S_{\tau'} + S_{\tau''} \right) - (S_{\tau'} + S_{\tau''}) \right| < \epsilon$
+
+$\displaystyle \left| \int_a^b - \left( \int_a^b + \int_a^b \right) + \left( S_{\tau'} + S_{\tau''} \right) - (S_{\tau'} + S_{\tau''}) \right| \leq \left| \int_a^b -  S_{\tau'} + S_{\tau''} \right| + \left| \int_a^b - S_{\tau'} \right| + \left| \int_c^b - S_{\tau''} \right| <\epsilon$
+
+$\left| \int_a^b - ( S_{\tau'} + S_{\tau'')} \right| < \frac{\epsilon}{3}$
+
+$ \left| \int_a^b - S_{\tau'} \right| < \frac{\epsilon}{3}$
+
+$\left| \int_c^b - S_{\tau''} \right| < \frac{\epsilon}{3}$
+
+\end{definit}
+
+
+
+
+
 
 \end{document}
