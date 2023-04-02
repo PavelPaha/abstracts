@@ -74,9 +74,9 @@
 \item \sout{Пример ограниченной неинтегрируемой функции}
 \item Суммы Дарбу и их свойства. Критерий интегрируемости
 \item \sout{Аддитивность интеграла по множеству}
-\item Интегрируемость непрерывной функции
-\item Интегрируемость монотонной функции
-\item Неизменность интеграла при изменении функции в конечном числе точек
+\item \sout{Интегрируемость непрерывной функции}
+\item \sout{Интегрируемость монотонной функции}
+\item \sout{Неизменность интеграла при изменении функции в конечном числе точек}
 \item Интегрируемость композиции непрерывной и интегрируемой функций
 \item Интегрируемость произведения функций
 \item Интеграл с переменным верхним пределом: непрерывность и дифференцируемость
@@ -168,7 +168,7 @@ $$
 \]
 
 \[
-	\forall x \in [a,b] D(x) \text{не интегрируема на} [a, b] \text{так как}
+	\forall x \in [a,b] \quad D(x) \quad \text{не интегрируема на} \quad  [a, b], \quad \text{так как}
 \]
 
 \begin{enumerate}
@@ -236,15 +236,168 @@ $\displaystyle \left| \int_a^b - \left( \int_a^b + \int_a^b \right) \right| < \e
 
 $\displaystyle \left| \int_a^b - \left( \int_a^b + \int_a^b \right) + \left( S_{\tau'} + S_{\tau''} \right) - (S_{\tau'} + S_{\tau''}) \right| < \epsilon$
 
-$\displaystyle \left| \int_a^b - \left( \int_a^b + \int_a^b \right) + \left( S_{\tau'} + S_{\tau''} \right) - (S_{\tau'} + S_{\tau''}) \right| \leq \left| \int_a^b -  S_{\tau'} + S_{\tau''} \right| + \left| \int_a^b - S_{\tau'} \right| + \left| \int_c^b - S_{\tau''} \right| <\epsilon$
+$\displaystyle \left| \int_a^b - \left( \int_a^b + \int_a^b \right) + \left( S_{\tau'} + S_{\tau''} \right) - (S_{\tau'} + S_{\tau''}) \right| \leq \left| \int_a^b -  (S_{\tau'} + S_{\tau''}) \right| + \left| \int_a^b - S_{\tau'} \right| + \left| \int_c^b - S_{\tau''} \right| <\epsilon$
 
-$\left| \int_a^b - ( S_{\tau'} + S_{\tau'')} \right| < \frac{\epsilon}{3}$
+$\left| \int_a^b - ( S_{\tau'} + S_{\tau''}) \right| < \frac{\epsilon}{3}$
 
 $ \left| \int_a^b - S_{\tau'} \right| < \frac{\epsilon}{3}$
 
 $\left| \int_c^b - S_{\tau''} \right| < \frac{\epsilon}{3}$
 
 \end{definit}
+
+\begin{definit}
+\subsection*{Интегрируемость непрерывной функции}
+
+\begin{htheorem}\textbf{Теорема}.
+
+Пусть $f$ непрерывна на $[a,b]$, тогда $f$ интегрируема на $[a,b]$.
+\end{htheorem}
+
+\begin{hproof}\textbf{Доказательство.}
+
+$f$ непрерывна на $[a,b]$, значит она равномерно нерпрерывна на $[a,b]$ (теорема Кантора):
+
+\[
+\forall \varepsilon > 0 \quad \exists \delta ( \varepsilon ) \quad \forall x', x'' \in [a,b] \quad |x'-x''| < \delta \Rightarrow |f(x') - f(x'')| < \varepsilon
+\]
+
+Теперь поймём, что 
+
+\[
+\forall \varepsilon' > 0 \quad \exists \delta'(\varepsilon) > 0 \quad \forall \tau \quad (\lambda_\tau < \delta' \Rightarrow \overline{S_\tau} - \underline{S_\tau} < \varepsilon')
+\]
+
+Рассмотрим разбиение $\tau$, у которого $\lambda_\tau < \delta$ ($\delta$ берём из определения равномерной непрерывности).
+
+\[
+\overline{S_\tau} - \underline{S_\tau} = \sum_{k=1}^n (M_k-m_k) \Delta x_k
+\]
+
+\[
+\forall \xi_j', \xi_j'' \in [x_j, x_{j+1}] \quad |\xi_j' - \xi_j''| < \delta, \quad \text{так как} \quad \lambda_\tau < \delta
+\]
+
+И по равномерной непрерывности получаем
+
+\[
+|f(\xi_j)' - f(\xi_j'')| < \varepsilon
+\]
+
+\[
+|f(\xi_j)' - f(\xi_j'')| < \varepsilon \Leftrightarrow M_j - m_j < \varepsilon
+\]
+
+Докажем это утверждение:
+\begin{enumerate}
+\item $\Leftarrow$:
+
+\[
+M_j - m_j < \varepsilon
+\]
+
+\[
+\begin{cases}
+f(\xi_j') \leq M_j \\
+f(\xi_j'') \geq m_j \\
+\end{cases}
+\Rightarrow f(\xi_j') - f(\xi_j'') \leq M_j-m_j < \varepsilon
+\]
+
+\item $\Rightarrow$:
+
+Знаем $|f(\xi_j)' - f(\xi_j'')| < \varepsilon$.
+
+Возьмём $\sup$ по $\xi_j'$:
+
+\[
+	\sup_{\xi_j'}(f(\xi_j') - f(\xi_j'')) = M_j - f(\xi_j'') \leq \varepsilon
+\]
+
+А затем возьмём $\inf$ по $\xi_j''$ и получим:
+
+\[
+M_j - m_j < \varepsilon
+\]
+
+\end{enumerate}
+
+Мы доказали 
+
+\[
+|f(\xi_j)' - f(\xi_j'')| < \varepsilon \Leftrightarrow M_j - m_j < \varepsilon
+\]
+
+\[
+\overline{S_\tau} - \underline{S_\tau} = \sum_{k=1}^n (M_k-m_k) \Delta x_k < \varepsilon \sum_{k=1}^n \Delta x_k = \varepsilon (b-a)
+\]
+\end{hproof}
+
+
+\end{definit}
+
+
+\begin{definit}
+\subsection*{Интегрируемость монотонной функции}
+
+\begin{htheorem}\textbf{Теорема}.
+
+Пусть $f$ монотонна на $[a,b]$. Тогда $f$ интегрируема $[a,b]$.
+\end{htheorem}
+
+\begin{hproof}\textbf{Доказательство.}
+
+Б.о.о. скажем, что $f$ монотонно возрастает.
+
+Определение интегрируемости:
+
+\[
+\forall \varepsilon > 0 \quad \exists \delta(\varepsilon) > 0 \quad \forall \tau \quad (\lambda_\tau < \delta \Rightarrow \overline{S_\tau} - \underline{S_\tau} < \varepsilon)
+\]
+
+\[
+\overline{S_\tau} - \underline{S_\tau} = \sum_{k=1}^n (M_k-m_k) \Delta x_k = \sum_{k=1}^n (f(x_k) - f(x_{k-1})) \Delta x_k \leq \delta \sum_{k=1}^n (f(x_k) - f(x_{k-1})
+\]
+
+\[
+\sum_{k=1}^n (f(x_k) - f(x_{k-1})) = \delta (f(b)-f(a))
+\]
+
+Ну и чтобы $\delta (f(b)-f(a))$ было меньше $\varepsilon$, возьмём $\delta < \frac{\varepsilon}{f(b)-f(a)}$.
+\end{hproof}
+\end{definit}
+
+\begin{definit}
+\subsection*{Неизменность интеграла при изменении функции в конечном числе точек}
+\begin{htheorem}\textbf{Теорема}.
+
+Пусть $f$ интегрируема $[a,b]$. Тогда если поменяем $f$ в конечном числе точек, то площадь останется неизменной.
+\end{htheorem}
+
+
+\begin{hproof}\textbf{Доказательство.}
+
+Пусть $\breve{f}$ это $f$, у которой поменяли $f(x_0)$ на $c$
+
+\[
+g(x) = \begin{cases} 0, x \neq x_0 \\ f(x_0) - c, x=x_o  \end{cases}
+\]
+
+\[
+\int_a^b g(x)dx = 0
+\]
+
+\[
+\forall \tau |s_\tau| \leq |x - f(x_0)| \cdot \lambda_\tau \rightarrow 0 \Rightarrow \int_a^b g(x)d(x) = 0
+\]
+
+\[
+\int_a^b f = \int_a^b (\breve{f} + g) = \int_a^b \breve{f} + 0 =  \int_a^b \breve{f}
+\]
+\end{hproof}
+\end{definit}
+
+
 
 
 
