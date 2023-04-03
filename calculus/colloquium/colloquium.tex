@@ -79,13 +79,13 @@
 \item \sout{Неизменность интеграла при изменении функции в конечном числе точек}
 \item Интегрируемость композиции непрерывной и интегрируемой функций
 \item Интегрируемость произведения функций
-\item Интеграл с переменным верхним пределом: непрерывность и дифференцируемость
+\item \sout{Интеграл с переменным верхним пределом: непрерывность и дифференцируемость}
 \item Формула Ньютона-Лейбница
 \item Пример неинтегрируемой функции с первообразной
 \item Пример интегрируемой функции без первообразной
 \item Интегрирование по частям
-\item Замена переменной
-\item Первая теорема о среднем
+\item \sout{Замена переменной}
+\item \sout{Первая теорема о среднем}
 \item Вычисление площадей
 \item Вычисление длины дуги
 \item Приближённое вычисление интеграла: методы прямоугольников, трапеций, Симпсона 
@@ -388,7 +388,7 @@ g(x) = \begin{cases} 0, x \neq x_0 \\ f(x_0) - c, x=x_o  \end{cases}
 \]
 
 \[
-\forall \tau |s_\tau| \leq |x - f(x_0)| \cdot \lambda_\tau \rightarrow 0 \Rightarrow \int_a^b g(x)d(x) = 0
+\forall \tau |s_\tau| \leq |x - f(x_0)| \cdot \lambda_\tau \rightarrow 0 \Rightarrow \int_a^b g(x)dx = 0
 \]
 
 \[
@@ -397,6 +397,162 @@ g(x) = \begin{cases} 0, x \neq x_0 \\ f(x_0) - c, x=x_o  \end{cases}
 \end{hproof}
 \end{definit}
 
+\begin{definit}
+\subsection*{Интеграл с переменным верхним пределом: непрерывность и дифференцируемость}
+
+\textbf{Определение.} Пусть $f$ интегрируема на $[a,b]$ ($\Rightarrow \forall x \in (a,b) \quad \exists \int_a^x f(t)dt$.
+
+$\Phi(x) = \int_a^x f(t)dt$ - интеграл с переменным верхним пределом (договоримся, что $\int_a^a = 0$).
+
+\begin{htheorem}\textbf{Теорема}.
+
+Пусть $f$ ограничена на $[a,b]$. Тогда $\Phi$ непрерывна и $\exists C: \quad |\Phi(x) - \Phi(y)| \leq С|x-y| \quad \forall x, y \in (a,b)$ (\textit{липшицевость}).
+\end{htheorem}
+
+\begin{hproof}\textbf{Доказательство.}
+Из липшицевости следует непрерывность по определению непрерывности ($\delta = \frac{\varepsilon}{C}$) (типа множество липшицевостных функций является подмножеством непрерывных функций)
+
+
+Предположим $x<y$:
+
+\[
+	|\Phi(x) - \Phi(y)| = \left| \int_a^x f(t)dt - \int_a^y dt \right| = \left| \int_x^y f(t)dt \right| \leq \begin{bmatrix}
+	\left| \sum f(\xi_k) \Delta x_k \right| \leq \sum \left| f(\xi_k) \right| \Delta x_k \\
+	\left| \sum f(\xi_k) \Delta x_k \right| \rightarrow |\int f| \\
+	 \sum \left| f(\xi_k) \right| \Delta x_k \rightarrow |\int f|
+	\end{bmatrix} \leq
+\]
+ 
+\[ \leq
+ \begin{bmatrix}
+ |f| \leq B
+ \end{bmatrix} \leq B \cdot \left| \int_x^y dt \right| \leq B(y-x)
+\]
+\end{hproof}
+
+
+\end{definit}
+
+\begin{definit}
+\subsection*{Замена переменной}
+
+\begin{htheorem}\textbf{Теорема}.
+
+Пусть $f$ непрерывна на $[x_1, x_2]$, а $g$ непрерывно дифференцируема на $[t_1, t_2]$ и $g(t_1) = x_1, g(t_2) = x_2$ и $g(t) \in [x_1, x_2], t \in [t_1, t_2]$. Тогда
+
+\[
+\int_{x_1}^{x_2} f(x)dx = \int_{t_1}^{t_2} f(g(t)) d'(t)dt
+\]
+\end{htheorem}
+
+\begin{hproof}\textbf{Доказательство.}
+
+$f$ непрерывна. А если $f$ непрерывна, то существует первообразная $F$.
+
+По теореме (?) $\Phi = \int_{x_1}^x f(t)dt$ - дифференцируема и $\Phi'(x) = f(x)$. Тогда $\Phi(x)$ - первообразная $\Rightarrow \int_{x_1}^{x_2} f(x)dx = F(x_2) - F(x_1)$.
+
+Рассмотрим $F(g(t)), t \in [t_1, t_2]$.
+
+\[
+F'(g(t)) = F'(g(t))g'(t) = f(g(t))g'(t)
+\]
+
+$F(g(t))$ - первообразная для $f(g(t))g'(t) \Rightarrow \int_{t_1}^{t_2} f(g(t))g'(t)dt = F(g(t_2)) - F(g(t_1)) = F(x_2) - F(x_1)$
+
+Итого $F(x_2) - F(x_1) = F(x_2) - F(x_1)$. Доказано.
+\end{hproof}
+
+\begin{htheorem}\textbf{Теорема}.
+Пусть $f$ непрерывна на $[a,b]$. Тогда $\forall x_9 \in (a,b) \quad \Phi'(x_0) = f(x_0)$
+
+\end{htheorem}
+
+\begin{hproof}\textbf{Доказательство.}
+
+\[
+\Phi'(x_0) = \lim_{h \rightarrow 0} \frac{\Phi(x_0 + h) - \Phi (x_0)}{h}
+\]
+
+\[
+\frac{\Phi(x_0 + h) - \Phi (x_0)}{h} = \frac{\int_{x_0}^{x_0+h} f(t)dt}{h} = \frac{\int_{x_0}^{x_0+h} f(t)dt - f(x_0)h}{h} + f(x_0) = 
+\]
+
+\[
+ = \int_{x_0}^{x_0+h} \frac{(f(t_-f(x_0)dt}{h} + f(x_0)
+\]
+
+\[
+\left| \frac{\Phi(x_0+h)-\Phi(x_0)}{h} - f(x_0) \right| = \left| \int_{x_0}^{x_0+h} \frac{(f(t_-f(x_0)dt}{h} \right| \leq 
+\]
+
+\[
+ \leq \begin{bmatrix}
+ \text{О, а ведь} \quad f \quad \text{непрерывна}: \forall \varepsilon > 0 \quad \exists \delta: \quad 0 < |t-x_0| < \delta \Rightarrow |f(t)-f(x_0)| < \varepsilon \\
+ \text{Берём любой} \quad \varepsilon \quad \text{и по нему находим} \quad \delta \quad \text{и берём} \quad h < \delta 
+ \end{bmatrix} \leq 
+\]
+
+\[
+\leq \frac{1}{h} \int_{x_0}^{x_0+h} |f(t) - f(x_0)| dt \leq \frac{1}{h} \int_{x_0}^{x_0+h} \varepsilon dt = \varepsilon
+\]
+\end{hproof}
+\end{definit}
+
+\begin{definit}
+\subsection*{Первая теорема о среднем}
+
+\begin{htheorem}\textbf{Теорема}.
+
+Пусть $f$ интегрируема на $[a,b]$, $\Phi$ - весовая функция ($\geq 0$ и интегрируемая) \newline и $m \leq f \leq M$ на $[a,b]$. Тогда существует $\mu \in [m, M]: \quad \mu \int_a^b \Phi = \int_a^b \Phi f$
+
+\textbf{Замечание.}
+
+В частности, если $f$ непрерывная, то она достигает $min = m$ и $max = M$ на $[a,b]$ и по теореме Коши о промежуточных значениях
+
+\[
+\forall \mu \in [m,M] \quad \exists x_0 \in [a,b]: \quad \mu = f(x_0)
+\]
+
+\textbf{Замечание.}
+
+Важно, чтобы $\Phi$ была знакопостоянной. Контрпример - $f = x, \Phi = sgn x$ на $[-1,1]$.
+
+$\int_{-1}^1 x sgn x fx = 1$
+
+$\mu \int_{-1}^1 sgn x dx = 0 \quad \forall \mu$
+\end{htheorem}
+
+\begin{hproof}\textbf{Доказательство.}
+
+Рассмотрим 2 случая:
+\begin{enumerate}
+\item $\int_a^b \Phi = 0 \Rightarrow  m \int_a^b \Phi \leq \int_a^b f \Phi \leq M \int_a^b \Phi$
+\[
+\begin{cases}
+m \int_a^b \Phi = 0 \\ M \int_a^b \Phi = 0
+\end{cases} \Rightarrow \int_a^b f \Phi = 0
+\]
+
+\item $\int_a^b \Phi \neq 0$
+
+Поделим неравенство из предыдущего пункта на $\int_a^b \Phi$:
+\[
+\Rightarrow  m \leq \frac{\int_a^b f \Phi}{\int_a^b \Phi} \leq M
+\]
+
+
+\end{enumerate}
+\end{hproof}
+
+\end{definit}
+
+\begin{definit}
+\subsection*{Вычисление длины дуги}
+
+\textbf{Определение.} \textit{Кривой} называется непрерывное отображение отрезка на плоскость.
+
+\textbf{Определение.}  Кривая $L$ называется \textit{спрямляемой}, если множество длин вписанных в неё ломаных $l$ ограничено сверху.
+\end{definit}
 
 
 
