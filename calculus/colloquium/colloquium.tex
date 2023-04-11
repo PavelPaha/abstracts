@@ -666,9 +666,41 @@ m \int_a^b \Phi = 0 \\ M \int_a^b \Phi = 0
 \end{definit}
 
 
+\section*{Несколько задач}
 
+\subsection{$f$ непрерывна на $[a,b]$ и $\int_a^b f = 0$, $f$ знакопостоянна на $[a,b]$. Доказать, что $f(x)=0 \quad \forall x \in [a,b]$}
 
+\textbf{Доказательство.} От противного. Пусть $\exists c \in [a,b]: \quad f(c)>0$ (б.о.о $f(c)>0$, для $f(c) < 0$ аналогично).
 
+Так как $f$ непрерывна, то найдётся окрестность $O_{\varepsilon}(c)$ такая, что $\forall x \in O_{\varepsilon}(c) \quad f(x) > 0$. Получается, на отрезке $[c-\varepsilon, c+\varepsilon]$ $f$ положительна. 
 
+Учитывая, что $f$ знакопостоянна, то есть в нашем случае положительна на $[a,b]$, то мы не можем "компенсировать" ту положительную часть под графиком на отрезке $[c-\varepsilon, c+\varepsilon]$, так как на $[a,b]$ функция неотрицательна. Тогда $\int_a^b f(x)dx > 0$. Противоречие с условием задачи доказывает требуемое.
+
+\subsection{Пусть $|f(x)| \leq M \quad \forall x > 0, \quad \forall x > 0 \quad \exists \int_0^x f(t)dt$. Доказать, что $\Phi(x) = \int_0^x f(t)dt$ равномерно непрерывна на $[0, +\infty)$.}
+
+\textbf{Доказательство.}
+Запишем определение равномерной непрерывности для $\Phi$, которое мы хотим доказать:
+
+\[
+\forall \varepsilon > 0 \quad \exists \delta(\varepsilon) \quad \forall x' > x'' \geq 0 \quad x'-x''<\delta \Rightarrow |\Phi(x') - \Phi(x'')| < \varepsilon
+\]
+
+\[
+|\Phi(x') - \Phi(x'')| = \left| \int_0^{x'} f(t)dt - \int_0^{x''} f(t)dt \right| = \left| \int_{x''}^{x'} f(t)dt \right| \leq M(x'-x'') 
+\]
+
+Сейчас мы хотим сделать $M(x'-x'') < \varepsilon$. Поэтому сделаем $\delta < \frac{\varepsilon}{M}$
+
+\subsection{Пусть $f$ интегрируема на $[0,1]$ и $\int_0^1 f(x)dx < 0$. Доказать, что $\exists [\alpha, \beta] \quad f \leq 0$ на $[\alpha, \beta]$.}
+
+\textbf{Доказательство.} От противного. 
+\[ \forall [\alpha, \beta] \subset [0,1] \quad \exists c \in [\alpha, \beta] \quad f(c) > 0\]
+
+По условию 
+
+\[ \lim_{n \rightarrow \infty} \sum_{k=1}^n f(\xi_k) \Delta x_k < 0
+\]
+
+Зафиксируем $n$. Разобъём наш отрезок $[0,1]$ на $n$ отрезочков, для каждого из которых найдём $\xi_i$ такое, что $f(\xi_i) > 0 \Rightarrow \int_0^1 f(x)dx > 0$. Противоречие. Значит существует такой отрезок, на котором $f$ неположительна.
 
 \end{document}
