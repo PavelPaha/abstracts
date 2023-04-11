@@ -104,7 +104,7 @@
 
 \textbf{Определение} $f$, определённая на $[a,b]$, интегрируема по Риману на $[a,b]$, если
 
-$$\exists I \in \mathbb{R}: \quad \forall \epsilon > 0 \exists \delta (\epsilon) \quad \forall \tau  \forall \xi \quad (\lambda_t < \delta \Rightarrow |S(f, \tau, \xi) - I| < \epsilon)$$
+$$\exists I \in \mathbb{R}: \quad \forall \varepsilon > 0 \exists \delta (\varepsilon) \quad \forall \tau  \forall \xi \quad (\lambda_t < \delta \Rightarrow |S(f, \tau, \xi) - I| < \varepsilon)$$
 
 Обозначаем $I = \int_a^b f(x)dx$
 
@@ -114,7 +114,7 @@ $$\exists I \in \mathbb{R}: \quad \forall \epsilon > 0 \exists \delta (\epsilon)
 \begin{definit}
 \subsection*{Интегрируемость суммы функций}
 \begin{htheorem}\textbf{Теорема}.
-Пусть $f$ и $g$ интегрируемы на $[a,b]$ и $\alpha, \beta \in \mathbb{R}$. Тогда $\alpha f + \beta g$ интегрирума на $[a,b]$ и $$\int_a^b(\alpha f + \beta g)dx = \alpha \int_a^b fdx + \beta \int_a^b gdx$$
+Пусть $f$ и $g$ интегрируемы на $[a,b]$ и $\alpha, \beta \in \mathbb{R}$. Тогда $\alpha f + \beta g$ интегрируема на $[a,b]$ и $$\int_a^b(\alpha f + \beta g)dx = \alpha \int_a^b fdx + \beta \int_a^b gdx$$
 \end{htheorem}
 
 \begin{hproof}\textbf{Доказательство.}
@@ -125,12 +125,12 @@ $$= \alpha S(f, \tau, \xi) + \beta S(g, \tau, \xi)$$
 
 $$ \left| S(\alpha f + \beta g, \tau, \xi) - \left( \alpha \int_a^b fdx + \beta \int_a^b gdx \right) \right| \leq |\alpha| \left| S(f, \tau, \xi) - \int_a^b f \right| + |\beta| \left| S(g, \tau, \xi) - \int_a^b g  \right|$$
 
-В определении интегрируемости $f$ и $g$ берём не $\epsilon$, а $\frac{\epsilon}{|\alpha|+|\beta|}$
+В определении интегрируемости $f$ и $g$ берём не $\varepsilon$, а $\frac{\varepsilon}{|\alpha|+|\beta|}$
 
-Тогда $$ \left| S(f, \tau, \xi) - \int_a^b f \right| \leq \frac{\epsilon}{|\alpha|+|\beta|}\quad \text{и} \quad \left| S(g, \tau, \xi) - \int_a^b g  \right| \leq \frac{\epsilon}{|\alpha|+|\beta|} \Rightarrow$$
+Тогда $$ \left| S(f, \tau, \xi) - \int_a^b f \right| \leq \frac{\varepsilon}{|\alpha|+|\beta|}\quad \text{и} \quad \left| S(g, \tau, \xi) - \int_a^b g  \right| \leq \frac{\varepsilon}{|\alpha|+|\beta|} \Rightarrow$$
 
 $$
-\Rightarrow |\alpha| \left| S(f, \tau, \xi) - \int_a^b f \right| + |\beta| \left| S(g, \tau, \xi) - \int_a^b g  \right| < \epsilon$$
+\Rightarrow |\alpha| \left| S(f, \tau, \xi) - \int_a^b f \right| + |\beta| \left| S(g, \tau, \xi) - \int_a^b g  \right| < \varepsilon$$
 
 \end{hproof}
 \end{definit}
@@ -147,7 +147,7 @@ $$
 
 Проведём от противного: пусть $f$ не ограничена, но интегрируема.
 
-Тогда $I - \epsilon < \sum_{k=1}^n f(\xi_k) \Delta x_k < I + \epsilon$ для какого-то разбиения $\tau$ при заданном $\epsilon > 0$ и любом выборе $\xi_k \in [x_{k-1}, x_k]$.
+Тогда $I - \varepsilon < \sum_{k=1}^n f(\xi_k) \Delta x_k < I + \varepsilon$ для какого-то разбиения $\tau$ при заданном $\varepsilon > 0$ и любом выборе $\xi_k \in [x_{k-1}, x_k]$.
 
 Так как $f$ не ограничена, то найдётся такой отрезок $[x_{k-1}, x_k]$, на котором $f$ не ограничена $\Rightarrow \sum_{k=1}^n f(\xi_k) \Delta x_k $ можно сделать сколь угодно большим по модулю. Противоречие.
 \end{hproof}
@@ -232,17 +232,17 @@ $$
 
 Докажем уже наконец-то, что $\displaystyle \int_a^b f = \int_a^c f + \int_c^b f $
 
-$\displaystyle \left| \int_a^b - \left( \int_a^b + \int_a^b \right) \right| < \epsilon$
+$\displaystyle \left| \int_a^b - \left( \int_a^c + \int_c^b \right) \right| < \varepsilon$
 
-$\displaystyle \left| \int_a^b - \left( \int_a^b + \int_a^b \right) + \left( S_{\tau'} + S_{\tau''} \right) - (S_{\tau'} + S_{\tau''}) \right| < \epsilon$
+$\displaystyle \left| \int_a^b - \left( \int_a^c + \int_c^b \right) + \left( S_{\tau'} + S_{\tau''} \right) - (S_{\tau'} + S_{\tau''}) \right| < \varepsilon$
 
-$\displaystyle \left| \int_a^b - \left( \int_a^b + \int_a^b \right) + \left( S_{\tau'} + S_{\tau''} \right) - (S_{\tau'} + S_{\tau''}) \right| \leq \left| \int_a^b -  (S_{\tau'} + S_{\tau''}) \right| + \left| \int_a^b - S_{\tau'} \right| + \left| \int_c^b - S_{\tau''} \right| <\epsilon$
+$\displaystyle \left| \int_a^b - \left( \int_a^c + \int_c^b \right) + \left( S_{\tau'} + S_{\tau''} \right) - (S_{\tau'} + S_{\tau''}) \right| \leq \left| \int_a^b -  (S_{\tau'} + S_{\tau''}) \right| + \left| \int_a^c - S_{\tau'} \right| + \left| \int_c^b - S_{\tau''} \right| <\varepsilon$
 
-$\left| \int_a^b - ( S_{\tau'} + S_{\tau''}) \right| < \frac{\epsilon}{3}$
+$\left| \int_a^b - ( S_{\tau'} + S_{\tau''}) \right| < \frac{\varepsilon}{3}$
 
-$ \left| \int_a^b - S_{\tau'} \right| < \frac{\epsilon}{3}$
+$ \left| \int_a^c - S_{\tau'} \right| < \frac{\varepsilon}{3}$
 
-$\left| \int_c^b - S_{\tau''} \right| < \frac{\epsilon}{3}$
+$\left| \int_c^b - S_{\tau''} \right| < \frac{\varepsilon}{3}$
 
 \end{definit}
 
@@ -562,7 +562,7 @@ $F(g(t))$ - первообразная для $f(g(t))g'(t) \Rightarrow \int_{t_
 \end{hproof}
 
 \begin{htheorem}\textbf{Теорема}.
-Пусть $f$ непрерывна на $[a,b]$. Тогда $\forall x_9 \in (a,b) \quad \Phi'(x_0) = f(x_0)$
+Пусть $f$ непрерывна на $[a,b]$. Тогда $\forall x_0 \in (a,b) \quad \Phi'(x_0) = f(x_0)$
 
 \end{htheorem}
 
