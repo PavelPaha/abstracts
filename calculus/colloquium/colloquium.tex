@@ -4,6 +4,7 @@
 \usepackage[12pt]{extsizes}
 \usepackage[normalem]{ulem}
 \usepackage{calligra}
+\usepackage{pdfpages}
 
 \usepackage[english,russian]{babel}
 \usepackage[left=10mm, top=10mm, right=10mm, bottom=20mm, nohead, nofoot]{geometry}
@@ -78,8 +79,8 @@
 \item \sout{Интегрируемость непрерывной функции}
 \item \sout{Интегрируемость монотонной функции}
 \item \sout{Неизменность интеграла при изменении функции в конечном числе точек}
-\item Интегрируемость композиции непрерывной и интегрируемой функций
-\item Интегрируемость произведения функций
+\item Интегрируемость композиции непрерывной и интегрируемой функций - \textbf{много недочётов!}
+\item \sout{Интегрируемость произведения функций}
 \item \sout{Интеграл с переменным верхним пределом: непрерывность и дифференцируемость}
 \item \sout{Формула Ньютона-Лейбница}
 \item \sout{Пример неинтегрируемой функции с первообразной}
@@ -89,7 +90,7 @@
 \item \sout{Первая теорема о среднем}
 \item Вычисление площадей - \textbf{что здесь писать, друзья?}
 \item \sout{Вычисление длины дуги}
-\item Приближённое вычисление интеграла: методы прямоугольников, трапеций, Симпсона 
+\item \sout{Приближённое вычисление интеграла: методы прямоугольников, трапеций, Симпсона} 
 \end{enumerate}
 
 \newpage
@@ -399,6 +400,116 @@ g(x) = \begin{cases} 0, x \neq x_0 \\ f(x_0) - c, x=x_o  \end{cases}
 \end{definit}
 
 \begin{definit}
+\subsection*{Интегрируемость композиции непрерывной и интегрируемой функций}
+
+\begin{htheorem}\textbf{Теорема}.
+
+Пусть $f$ интегрируема на $[a,b]$ и принимает значения в $[c,d]$. Пусть $\Phi$ непрерывна на $[c,d]$. Тогда $\Phi(f(x))$ интегрируема на $[a,b]$.
+\end{htheorem}
+
+\begin{hproof}\textbf{Доказательство.}
+
+$\Phi$ равномерно непрерывна на $[c,d]$:
+
+\[
+\forall \varepsilon > 0 \exists \delta(\varepsilon) \quad \forall x', x'' \in [c,d] \quad |x'-x''| < \delta \Rightarrow |f(x')-f(x'')|<\varepsilon
+\]
+
+Хотим $\overline{S_\tau(\Phi(f))} - \underline{S_\tau(\Phi(f))} < \varepsilon$.
+
+$f$ интегрируема $\Rightarrow$ если $\lambda_\tau < \delta$, то 
+
+\[
+\overline{S_\tau(f)} - \underline{S_\tau(f)} < \delta^2
+\]
+
+Это мы так взяли $\varepsilon = \delta^2$.
+
+Хотим оценить $\overline{S_\tau(\Phi(f))} - \underline{S_\tau(\Phi(f))} = \sum_{k=1}^n (M_k(\Phi(f)) - m_k(\Phi(f))$
+
+Имеем здесь 2 семейства индексов:
+
+\begin{enumerate}
+\item $I = \{k: M_k(f) - m_k(f) < \delta \}$
+\item $J = \{k: M_k(f) - m_k(f) \geq \delta \}$
+\end{enumerate}
+
+
+\begin{enumerate}
+\item $k \in I$:
+
+По лемме ($sup - inf$) (а я сам не понял какая это теорема:((()
+
+\[
+f(\xi)k') - f(\xi_k'') < \delta \Rightarrow | \Phi(f(\xi')) - \Phi(f(\xi''))| < \varepsilon \Rightarrow
+\]
+
+\[
+\Rightarrow \text{по этой же лемма (какоооой?((()} \quad M_k(\Phi(f)) - m_k(\Phi(f)) < \varepsilon
+\]
+
+\[
+\sum_{k \in I} \left( M_k(\Phi(f)) - m_k(\Phi(f)) \right) \Delta x_k < \varepsilon (b-a)
+\]
+\item $k \in J$:
+\[
+\overline{S_\tau(f)} - \underline{S_\tau(f)} < \delta^2
+\]
+
+\[
+\sum_{k \in J} \left( M_k(\Phi(f)) - m_k(\Phi(f)) \right) \Delta x_k < \varepsilon (b-a)
+\]
+
+
+\[
+k \in J \Rightarrow M_k(\Phi(f)) - m_k(\Phi(f) < \delta
+\]
+
+\[
+ \delta \sum_{k \in J} \Delta x_k \leq \overline{S_\tau(f)} - \underline{S_\tau(f)} < \delta^2
+\]
+
+\[
+\sum_{k \in J} \Delta x_k \leq \delta
+\]
+
+$\Phi$ непрерывна на $[c,d] \Rightarrow$ ограничена числом $L$.
+
+\[
+\sum_{k \in J} M_k(\Phi(f)) - m_k(\Phi(f)) \Delta x_k \leq 2L \sum_{k \in J} \Delta x_k  \leq 2L\varepsilon
+\]
+
+\end{enumerate}
+\end{hproof}
+
+
+\end{definit}
+
+\begin{definit}
+\subsection*{Интегрируемость произведения функций}
+
+\begin{htheorem}\textbf{Теорема}.
+Пусть $f$ и $g$ интегрируемы на $[a,b]$. Тогда $f*g$ тоже интегрируема на $[a,b]$.
+
+\end{htheorem}
+
+
+\begin{hproof}\textbf{Доказательство.}
+\[
+(f-g)^2 = f^2 - 2fg + g^2
+\]
+
+$(f-g)^2$ интегрируема, так как $f-g$ интегрируема и $(...)^2$ интегрируемо.
+
+\[
+fg = \frac{f^2 + g^2 - (f-g)^2}{2}
+\]
+
+Правая часть равенства интегрируема, значит левая тоже.
+\end{hproof}
+\end{definit}
+
+\begin{definit}
 \subsection*{Интеграл с переменным верхним пределом: непрерывность и дифференцируемость}
 
 \textbf{Определение.} Пусть $f$ интегрируема на $[a,b]$ ($\Rightarrow \forall x \in (a,b) \quad \exists \int_a^x f(t)dt$.
@@ -680,7 +791,7 @@ m \int_a^b \Phi = 0 \\ M \int_a^b \Phi = 0
 Пусть $l$ - это какая-то ломаная. 
 
 \[
-|l| = \sum_{k=1}^n \sqrt{(x(t_k) - x(t_{k-1}))^2 + (t(t_k) - y(t_{k-1}))^2} = \sum_{k=1}^n \sqrt{(x'(\xi_k))^2 + (y'(\eta_k)^2} \Delta t_k
+|l| = \sum_{k=1}^n \sqrt{(x(t_k) - x(t_{k-1}))^2 + (x(t_k) - y(t_{k-1}))^2} = \sum_{k=1}^n \sqrt{(x'(\xi_k))^2 + (y'(\eta_k)^2} \Delta t_k
 \]
 
 \[
@@ -804,5 +915,7 @@ S
 
 Зафиксируем $n$. Разобъём наш отрезок $[0,1]$ на $n$ отрезочков, для каждого из которых найдём $\xi_i$ такое, что $f(\xi_i) > 0 \Rightarrow \int_0^1 f(x)dx > 0$. Противоречие. Значит существует такой отрезок, на котором $f$ неположительна.
 
+\subsection*{Численное интегрирование}
+\includepdf[pages={1-}]{numerical_integrals.pdf} 
 
 \end{document}
