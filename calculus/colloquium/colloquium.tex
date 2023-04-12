@@ -262,6 +262,7 @@ $\left| \int_c^b - S_{\tau''} \right| < \frac{\varepsilon}{3}$
 Пусть $f$ непрерывна на $[a,b]$, тогда $f$ интегрируема на $[a,b]$.
 \end{htheorem}
 
+
 \begin{hproof}\textbf{Доказательство.}
 
 $f$ непрерывна на $[a,b]$, значит она равномерно нерпрерывна на $[a,b]$ (теорема Кантора):
@@ -292,11 +293,12 @@ $f$ непрерывна на $[a,b]$, значит она равномерно 
 |f(\xi_j)' - f(\xi_j'')| < \varepsilon
 \]
 
+\hypertarget{supinf}{}
 \[
 |f(\xi_j)' - f(\xi_j'')| < \varepsilon \Leftrightarrow M_j - m_j < \varepsilon
 \]
 
-Докажем это утверждение:
+Докажем это утверждение ($sup - inf$):
 \begin{enumerate}
 \item $\Leftarrow$:
 
@@ -434,7 +436,7 @@ $f$ интегрируема $\Rightarrow$ если $\lambda_\tau < \delta$, т�
 
 Это мы так взяли $\varepsilon = \delta^2$.
 
-Хотим оценить $\overline{S_\tau(\Phi(f))} - \underline{S_\tau(\Phi(f))} = \sum_{k=1}^n (M_k(\Phi(f)) - m_k(\Phi(f))$
+Хотим оценить $\overline{S_\tau(\Phi(f))} - \underline{S_\tau(\Phi(f))} = \sum_{k=1}^n (M_k(\Phi(f)) - m_k(\Phi(f)))$
 
 Имеем здесь 2 семейства индексов:
 
@@ -447,14 +449,14 @@ $f$ интегрируема $\Rightarrow$ если $\lambda_\tau < \delta$, т�
 \begin{enumerate}
 \item $k \in I$:
 
-По лемме ($sup - inf$) (а я сам не понял какая это теорема:((()
+По лемме (\hyperlink{supinf}{$sup - inf$})
 
 \[
-f(\xi)k') - f(\xi_k'') < \delta \Rightarrow | \Phi(f(\xi')) - \Phi(f(\xi''))| < \varepsilon \Rightarrow
+f(\xi_k') - f(\xi_k'') < \delta \Rightarrow | \Phi(f(\xi')) - \Phi(f(\xi''))| < \varepsilon \Rightarrow
 \]
 
 \[
-\Rightarrow \text{по этой же лемма (какоооой?((()} \quad M_k(\Phi(f)) - m_k(\Phi(f)) < \varepsilon
+\Rightarrow \text{по этой же лемме} \quad M_k(\Phi(f)) - m_k(\Phi(f)) < \varepsilon
 \]
 
 \[
@@ -523,7 +525,7 @@ fg = \frac{f^2 + g^2 - (f-g)^2}{2}
 \hypertarget{p12}{}
 \subsection*{Интеграл с переменным верхним пределом: непрерывность и дифференцируемость}
 
-\textbf{Определение.} Пусть $f$ интегрируема на $[a,b]$ ($\Rightarrow \forall x \in (a,b) \quad \exists \int_a^x f(t)dt$.
+\textbf{Определение.} Пусть $f$ интегрируема на $[a,b]$ $\Rightarrow \forall x \in (a,b) \quad \exists \int_a^x f(t)dt$.
 
 $\Phi(x) = \int_a^x f(t)dt$ - интеграл с переменным верхним пределом (договоримся, что $\int_a^a = 0$).
 
@@ -550,6 +552,41 @@ $\Phi(x) = \int_a^x f(t)dt$ - интеграл с переменным верх�
  \begin{bmatrix}
  |f| \leq B
  \end{bmatrix} \leq B \cdot \left| \int_x^y dt \right| \leq B(y-x)
+\]
+\end{hproof}
+
+\begin{htheorem}\textbf{Теорема}.
+
+Пусть $f$ непрерывна на $[a,b]$. Тогда $\forall x_0 \in (a,b) \quad \Phi'(x_0) = f(x_0)$.
+\end{htheorem}
+
+\begin{hproof}\textbf{Доказательство.}
+
+\[
+\Phi'(x) = \lim_{\Delta x \rightarrow 0} \frac{\Phi(x_0 + h) - \Phi(x_0)}{h}
+\]
+
+\[
+ \frac{\Phi(x_0 + h) - \Phi(x_0)}{h} = \frac{\int_{x_0}^{x_0+h} f(t)dt}{h} = \frac{\int_{x_0}^{x_0+h} f(t)dt - f(x_0)h}{h} + f(x_0) = 
+\]
+
+\[
+ = \frac{\int_{x_0}^{x_0+h} (f(t) - f(x_0))dt}{h} + f(x_0)
+\]
+\[
+\left|  \frac{\Phi(x_0 + h) - \Phi(x_0)}{h} - f(x_0) \right| = \left| \frac{\int_{x_0}^{x_0+h} (f(t) - f(x_0))dt}{h} \right| \leq \frac{1}{h} \int_{x_0}^{x_0+h} |f(t) - f(x_0)|dt
+\]
+
+О, а ведь $f$ непрерывна: 
+\[
+\forall \varepsilon > 0 \exists \delta: 0<|t-x_0|<\delta \Rightarrow |f(t) - f(x_0)| < \varepsilon
+\]
+
+Тут мы берём любой $\varepsilon$, по нему находим $\delta$ и берём $h < \delta$. Тогда $|x_0-t| < h$.
+
+
+\[
+\frac{1}{h} \int_{x_0}^{x_0+h} |f(t) - f(x_0)|dt \leq \frac{1}{h} \int_{x_0}^{x_0+h} \varepsilon dt = \varepsilon
 \]
 \end{hproof}
 
