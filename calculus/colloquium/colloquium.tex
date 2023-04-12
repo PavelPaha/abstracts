@@ -3,6 +3,7 @@
 \usepackage[T2A]{fontenc}
 \usepackage[12pt]{extsizes}
 \usepackage[normalem]{ulem}
+\usepackage{calligra}
 
 \usepackage[english,russian]{babel}
 \usepackage[left=10mm, top=10mm, right=10mm, bottom=20mm, nohead, nofoot]{geometry}
@@ -86,8 +87,8 @@
 \item \sout{Интегрирование по частям}
 \item \sout{Замена переменной}
 \item \sout{Первая теорема о среднем}
-\item Вычисление площадей
-\item Вычисление длины дуги
+\item Вычисление площадей - \textbf{что здесь писать, друзья?}
+\item \sout{Вычисление длины дуги}
 \item Приближённое вычисление интеграла: методы прямоугольников, трапеций, Симпсона 
 \end{enumerate}
 
@@ -653,17 +654,117 @@ m \int_a^b \Phi = 0 \\ M \int_a^b \Phi = 0
 \exists \xi \in [a,b]: \quad \int_a^b \Phi f = f(a) \int_a^{\xi} \Phi(x)dx + f(b) \int_{\xi}^b\Phi(x)dx
 \]
 
-Эта теорема без доказательства (а почему не знаю).
+Эта теорема без доказательства (а почему не знаю)
 \end{definit}
 
-\begin{definit}
 
+
+
+
+\begin{definit}
+\subsection*{Вычисление площадей}.
+
+Я не знаю, что здесь писать, друзья. Жду Issue, если хотите:0
+
+\end{definit}
+
+
+
+\begin{definit}
 \subsection*{Вычисление длины дуги}
 
 \textbf{Определение.} \textit{Кривой} называется непрерывное отображение отрезка на плоскость.
 
 \textbf{Определение.}  Кривая $L$ называется \textit{спрямляемой}, если множество длин вписанных в неё ломаных $l$ ограничено сверху.
+
+Пусть $l$ - это какая-то ломаная. 
+
+\[
+|l| = \sum_{k=1}^n \sqrt{(x(t_k) - x(t_{k-1}))^2 + (t(t_k) - y(t_{k-1}))^2} = \sum_{k=1}^n \sqrt{(x'(\xi_k))^2 + (y'(\eta_k)^2} \Delta t_k
+\]
+
+\[
+|L| =  \int_a^b \sqrt{(x'(t))^2 + (y'(t))^2} dt
+\]
+
+\begin{htheorem}\textbf{Теорема}.
+
+Пусть $x(t)$ и $y(t)$ непрерывно дифференцируема на $[\alpha, \beta]$. Тогда кривая
+$L =(x(t), y(t))$ спрямляемая и её длина равна $\int_{\alpha}^{\beta} \sqrt{(x'(t))^2+(y'(t))^2} dt$.
+\end{htheorem}
+
+\begin{hproof}\textbf{Доказательство.}
+
+
+\[
+|l| = [\text{теорема Лагранжа}] = \sum_{k=1}^n \sqrt{(x'(\xi_k))^2 + (y'(\eta_k)^2} \Delta t_k
+\]
+
+\[
+\sigma = \sum_{k=1}^n \sqrt{(x'(\xi_k))^2 + (y'(\xi_k)^2} \Delta t_k
+\]
+
+\[
+\left| |l| - \sigma \right| = \left| \sum_{k=1}^n \left( \sqrt{(x'(\xi_k))^2 + (y'(\xi_k)^2} - \sqrt{(x'(\xi_k))^2 + (y'(\eta_k)^2} \right) \Delta t_k \right| \leq 
+\]
+
+\[
+\leq [\text{не понял почему так}] \leq \sum_{k=1}^n \left| x'(\xi_k) - y'(\eta_k) \right| \Delta t_k
+\]
+
+$y'$ непрерывна по условию $\Rightarrow$ ограничена. Тогда 
+
+\[
+\sum_{k=1}^n \left| x'(\xi_k) - y'(\eta_k) \right| \Delta t_k \leq \sum_{k=1}^n (M_k - m_k) \Delta t_k \leq \overline{S(y', \tau)} - \underline{S(y', \tau)}
+\]
+
+$y'$ интегрируема, так как непрерывна $\Rightarrow \overline{S(y', \tau)} - \underline{S(y', \tau)} < \varepsilon$.
+
+Мы выяснили, что при достаточно маленьких разбиениях $||l|-\sigma| < \varepsilon$.
+
+
+$|l| \leq B \sum_{k=1}^n \Delta t_k = B(\beta - \alpha) \Rightarrow$ $L$ - спрямляемая.
+
+\[
+\begin{cases}
+|l| \approx \sigma \\
+|l| \approx |L| (\text{определение супремума})
+\end{cases} \Rightarrow \sigma \approx |L|
+\]
+
+\[
+\left| |L| - \int_{\alpha}^{\beta} \sqrt{(x'(t))^2+(y'(t))^2} dt \right| \leq \left| |L| - |l| \right| + \left| |l| - \int_{\alpha}^{\beta} \sqrt{(x'(t))^2+(y'(t))^2} dt \right| \leq
+\]
+
+\[
+\leq ||L|-|l|| + \left| |l| - \sigma \right| + \left| \sigma - \int_{\alpha}^{\beta}  \sqrt{(x'(t))^2+(y'(t))^2} dt \right|
+\]
+
+Почему это меньше $3\varepsilon$?
+
+\begin{enumerate}
+\item \[
+\forall \varepsilon \exists l_{\varepsilon}: \quad |L| -|l_{\varepsilon}| < \varepsilon
+\]
+
+Если ломаная меньше, чем $l_{\varepsilon}$, то она точно не короче, чем $l_{\varepsilon}$. Давайте мы будем рассматривать только такие ломаные.
+
+Тогда $|L| - |l| < \varepsilon$.
+\item $\left| |l| - \sigma \right| < \varepsilon$ при мелких $\tau$ (это мы выяснили в начале)
+\item $\left| \sigma - \int_{\alpha}^{\beta}  \sqrt{(x'(t))^2+(y'(t))^2} dt \right| < \varepsilon$ - по определению интеграла.
+
+\end{enumerate}
+S
+Итого, имеем, что 
+
+\[
+\forall \varepsilon > 0 \left| |L| -  \int_{\alpha}^{\beta}  \sqrt{(x'(t))^2+(y'(t))^2} dt| \right| \leq 3\varepsilon \Rightarrow |L| = \int_{\alpha}^{\beta}  \sqrt{(x'(t))^2+(y'(t))^2} dt
+\]
+
+\end{hproof}
+
 \end{definit}
+
 
 
 \section*{Несколько задач}
@@ -674,7 +775,7 @@ m \int_a^b \Phi = 0 \\ M \int_a^b \Phi = 0
 
 Так как $f$ непрерывна, то найдётся окрестность $O_{\varepsilon}(c)$ такая, что $\forall x \in O_{\varepsilon}(c) \quad f(x) > 0$. Получается, на отрезке $[c-\varepsilon, c+\varepsilon]$ $f$ положительна. 
 
-Учитывая, что $f$ знакопостоянна, то есть в нашем случае положительна на $[a,b]$, то мы не можем "компенсировать" ту положительную часть под графиком на отрезке $[c-\varepsilon, c+\varepsilon]$, так как на $[a,b]$ функция неотрицательна. Тогда $\int_a^b f(x)dx > 0$. Противоречие с условием задачи доказывает требуемое.
+Учитывая, что $f$ знакопостоянна, то есть в нашем случае положительна на $[a,b]$, то мы не можем <<компенсировать>> ту положительную часть под графиком на отрезке $[c-\varepsilon, c+\varepsilon]$, так как на $[a,b]$ функция неотрицательна. Тогда $\int_a^b f(x)dx > 0$. Противоречие с условием задачи доказывает требуемое.
 
 \subsection{Пусть $|f(x)| \leq M \quad \forall x > 0, \quad \forall x > 0 \quad \exists \int_0^x f(t)dt$. Доказать, что $\Phi(x) = \int_0^x f(t)dt$ равномерно непрерывна на $[0, +\infty)$.}
 
@@ -702,5 +803,6 @@ m \int_a^b \Phi = 0 \\ M \int_a^b \Phi = 0
 \]
 
 Зафиксируем $n$. Разобъём наш отрезок $[0,1]$ на $n$ отрезочков, для каждого из которых найдём $\xi_i$ такое, что $f(\xi_i) > 0 \Rightarrow \int_0^1 f(x)dx > 0$. Противоречие. Значит существует такой отрезок, на котором $f$ неположительна.
+
 
 \end{document}
