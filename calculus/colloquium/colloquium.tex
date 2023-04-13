@@ -93,6 +93,8 @@
 \item\hyperlink{p21}{\sout{Приближённое вычисление интеграла: методы прямоугольников, трапеций, Симпсона}}
 \end{enumerate}
 
+\subsection*{\hyperlink{tasks}{Несколько задач для подготовки с решением}}
+
 \newpage
 
 \begin{definit}
@@ -400,7 +402,7 @@ g(x) = \begin{cases} 0, x \neq x_0 \\ f(x_0) - c, x=x_o  \end{cases}
 \]
 
 \[
-\forall \tau |s_\tau| \leq |x - f(x_0)| \cdot \lambda_\tau \rightarrow 0 \Rightarrow \int_a^b g(x)dx = 0
+\forall \tau |s_\tau| \leq |c - f(x_0)| \cdot \lambda_\tau \rightarrow 0 \Rightarrow \int_a^b g(x)dx = 0
 \]
 
 \[
@@ -531,7 +533,7 @@ $\Phi(x) = \int_a^x f(t)dt$ - интеграл с переменным верх�
 
 \begin{htheorem}\textbf{Теорема}.
 
-Пусть $f$ ограничена на $[a,b]$. Тогда $\Phi$ непрерывна и $\exists C: \quad |\Phi(x) - \Phi(y)| \leq С|x-y| \quad \forall x, y \in (a,b)$ (\textit{липшицевость}).
+Пусть $f$ ограничена на $[a,b]$. Тогда $\Phi$ непрерывна и \\ $\exists C: \quad |\Phi(x) - \Phi(y)| \leq С|x-y| \quad \forall x, y \in (a,b)$ (\textit{липшицевость}).
 \end{htheorem}
 
 \begin{hproof}\textbf{Доказательство.}
@@ -937,7 +939,7 @@ S
 \includepdf[pages={1-}]{numerical_integrals.pdf} 
 
 
-
+\hypertarget{tasks}{}
 \section*{Несколько задач}
 
 \subsection{$f$ непрерывна на $[a,b]$ и $\int_a^b f = 0$, $f$ знакопостоянна на $[a,b]$. Доказать, что $f(x)=0 \quad \forall x \in [a,b]$}
