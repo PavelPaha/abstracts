@@ -74,7 +74,7 @@
 \item \hyperlink{p2}{\sout{Интегрируемость суммы функций}}
 \item \hyperlink{p3}{\sout{Ограниченность интегрируемой функции}}
 \item \hyperlink{p4}{\sout{Пример ограниченной неинтегрируемой функции}}
-\item Суммы Дарбу и их свойства. Критерий интегрируемости
+\item \hyperlink{p5}{\sout{Суммы Дарбу и их свойства. Критерий интегрируемости}}
 \item \hyperlink{p6}{\sout{Аддитивность интеграла по множеству}}
 \item \hyperlink{p7}{\sout{Интегрируемость непрерывной функции}}
 \item \hyperlink{p8}{\sout{Интегрируемость монотонной функции}}
@@ -186,6 +186,129 @@ $$
 \end{definit}
 
 
+\begin{definit}
+\hypertarget{p5}{}
+\subsection*{Суммы Дарбу и их свойства. Критерий интегрируемости.}
+В 100 раз лучше описано \href{https://univerlib.com/mathematical_analysis/definite_integral/definite_integral_def/}{здесь}
+
+Пусть $f$, определённая на $[a,b]$, ограничена на этом отрезке и пусть $\tau = \{ x_0, ..., x_n\}$ - разбиение отрезка $[a,b]$.
+
+\[
+M_i = \sup_{x \in [x_{i-1}, x_i]} f(x), m_i = \inf_{x \in [x_{i-1}, x_i]} f(x)
+\]
+
+\[
+\overline{S_\tau} = \sum_{i=1}^n M_i \Delta x_i, \underline{S_\tau} = \sum_{i=1}^n m_i \Delta x_i
+\]
+
+Это верхняя и нижняя суммы Дарбу соответственно.
+
+\begin{enumerate}
+\item Для любой выборки точек $\xi_i$ справедливо 
+
+\[
+\underline{S_\tau} \leq S_\tau \leq \overline{S_\tau}  
+\]
+
+\textbf{Доказательство.}
+
+Так как для любого $\xi_i \in [x_{i-1}, x_i]$: 
+\[
+m_i \leq f(\xi_i) \leq M_i
+\]
+
+то
+
+\[
+m_i \Delta x_i \leq f(\xi_i) \Delta x_i \leq M_i \Delta x_i
+\]
+
+Складывая эти неравенства, получаем
+
+\[
+\sum_{i=1}^n m_i \Delta x_i \leq \sum_{i=1}^n f(\xi+i) \Delta x_i \leq \sum_{i=1}^n M_i \Delta x_i
+\]
+
+Это в точности то, что нужно было доказать.
+
+\item \[\overline{S_\tau} = \sup_{\xi} S_\tau(\xi)\]
+
+\[\underline{S_\tau} = \inf_{\xi} S_\tau(\xi)\]
+
+\textbf{Доказательство.}
+\begin{enumerate}
+\item \[\overline{S_\tau} = \sup_{\xi} S_\tau(\xi)\]
+
+Согласно определению точной верхней грани, нужно доказать, что выполняются следующие условия:
+\[
+\begin{cases}
+\forall \xi \rightarrow S_\tau \leq \overline{S_\tau} \\ \forall \varepsilon > 0 \exists \xi': \overline{S_\tau} - S_\tau < \varepsilon
+\end{cases}
+\]
+
+Первое из этих условий выполняется очевидно по первому свойству. Докажем второе условие. Так как $M_i = \sup_{x \in [x_{i-1}, x_i]} f(x)$, то по определению точной верхней грани 
+\[
+\forall \varepsilon \quad \exists \xi_i'(\varepsilon) \in [x_{i-1}, x_i]: 0 \leq M_i - f(\xi_i') \leq \frac{\varepsilon}{b-a}
+\]
+
+Домножим $i$-е неравенство на $\Delta x_i$ и складывая все неравенства
+\[
+0 \leq \overline{S_\tau} - S_\tau < \varepsilon
+\]
+
+\item \[\underline{S_\tau} = \inf_{\xi} S_\tau(\xi)\] аналогично.
+\end{enumerate}
+
+\item Если разбиение $\tau_2$ - измельчение разбиения $\tau_1$, то 
+\[
+\underline{S_{\tau_1}} \leq \underline{S_{\tau_2}} \leq \overline{S_{\tau_1}} \leq \overline{S_{\tau_1}}
+\]
+То есть при измельчении разбиения нижняя сумма Дарбу не уменьшается, а верхняя не увеличивается.
+
+\textbf{Доказательство.} Для доказательства достаточно рассмотреть случай, когда $\tau_2$ получается из $\tau_1$ путём добавления только одной точки $x' \in (x_{i-1}, x_i)$.
+
+\[ \Delta x_i = [x_{i-1}, x'] + [x', x_i] \]
+
+Пусть $m_i' = \inf_{x \in [x_{i-1}, x']} f(x), m_i'' = \inf_{x \in [x', x_{i}]}$. Тогда очевидно $m_i' \geq m_i, m_i'' \leq m_i$.
+
+В суммах $\underline{S_{\tau_2}}$ и $\underline{S_{\tau_1}}$ равны все соответствующие слагаемы, кроме тех, которые связаны с отрезком $[x_{i-1}, x_i]$.
+
+Поэтому $\underline{S_{\tau_2}} - \underline{S_{\tau_1}} = m_i'(x'-x_{i-1}) + m_i''(x_i-x') - m_i(x_i-x_{i-1})$, где $m_i' \geq m_i, m_i'' \geq m_i$.
+
+Следовательно 
+
+\[
+\underline{S_{\tau_2}} - \underline{S_{\tau_1}} = (m_i' - m_i)(x'-x_{i-1}) + (m_i'' - m_i) (x_i-x') \geq 0
+\]
+
+то есть \[\underline{S_{\tau_1}} \leq \underline{S_{\tau_2}}\]
+
+Аналогично и с $\overline{S_{\tau_2}} \leq \overline{S_{\tau_1}}$.
+
+\item Для любых $\tau', \tau''$ 
+\[
+\underline{S_{\tau'}} \leq \overline{S_{\tau''}}
+\]
+
+\textbf{Доказательство.} Пусть $\tau$ - измельчённое разбиение и $\tau'$, и $\tau''$. Тогда $\underline{S_{\tau'}} \leq S_\tau \leq \overline{S_\tau}.$
+
+\[
+\overline{S_\tau} \leq \overline{S_{\tau''}}
+\] по предыдущему пункту, где $\tau_2 = \tau, \tau_1 = \tau'$.
+
+Объединяя, получаем $\underline{S_{\tau'}} \leq \underline{S_\tau} \leq \overline{S_\tau} \leq \overline{S_{\tau''}}$
+
+\item \[
+\exists \underline{J} = \sup_\tau \underline{S_\tau}, \overline{J} = \inf_\tau \overline{S_\tau}
+\] такие, что $\forall \tau', 
+\tau'' \quad \underline{S_{\tau'}} \leq \underline{J} \leq \overline{J} \leq \overline{S_{\tau''}} $
+
+\end{enumerate}
+
+
+\end{definit}
+
+
 
 \begin{definit}
 \hypertarget{p6}{}
@@ -208,15 +331,15 @@ $$
 
 Выберем такое разбиение, которое включает точку $c$. Теперь разбиваем $\tau$ на два подмножества $\tau'$ и $\tau''$, соответствующие отрезкам $[a, c]$ и $[c, b]$, так что $\tau = \{x_i \in \tau \mid x_i \leq c\}$ и $\tau'' = \{x_i \in \tau \mid x_i \geq c\}$.
 
-Тогда верхние и нижние суммы Дарбу для $f(x)$ на отрезках $[a, c]$ и $[c, b]$ будут равны $\overline{S_{\tau'}})$ и $\underline{S_{\tau'}}$, а также $\overline{S_{\tau''}})$ и $\underline{S_{\tau'}})$ соответственно.
+Тогда верхние и нижние суммы Дарбу для $f(x)$ на отрезках $[a, c]$ и $[c, b]$ будут равны $\overline{S_{\tau'}}$ и $\underline{S_{\tau'}}$, а также $\overline{S_{\tau''}}$ и $\underline{S_{\tau'}}$ соответственно.
 
 Поскольку разбиение $\tau$ является объединением $\tau'$ и $\tau''$, имеем:
 
 \[
-\overline{S_{\tau}} = \overline{S_{\tau'}} + \overline{S_{\tau''}}
+\overline{S_{\tau}} \leq \overline{S_{\tau'}} + \overline{S_{\tau''}}
 \]
 \[
-\underline{S_{\tau}} = \underline{S_{\tau'}} + \underline{S_{\tau''}}
+\underline{S_{\tau}} \geq \underline{S_{\tau'}} + \underline{S_{\tau''}}
 \]
 
 Из этого следует, что:
@@ -237,7 +360,45 @@ $$
 \overline{S_{\tau''}} - \underline{S_{\tau''}} < \varepsilon
 \]
 
+Пусть $f$ интегрируема на $[a,c]$ и $[c,b]$. Тогда $\exists \int_a^b f$.
 
+\[
+\overline{S_\tau} = \sum_{k \neq j} + M_j \Delta x_j
+\]
+
+\[
+\underline{S_\tau} = \sum_{k \neq j} + m_j \Delta x_j
+\]
+
+Хотим получить $\overline{S_\tau} \leq \overline{S_{\tau'}} + \overline{S_{\tau''}} + \text{что-то}$
+
+\[
+\overline{S_\tau} - (\overline{S_{\tau'}} + \overline{S_{\tau''}}) \leq \text{что-то}
+\]
+
+\[
+\overline{S_\tau} - (\overline{S_{\tau'}} + \overline{S_{\tau''}}) = M_j \Delta x_j - \left( \sup_{[x_{j-1}, c]} f(x) \right) (x-x_{j-1}) + \left( \sup_{[c, x_j]} f(x) \right)(x_j-c) \leq
+\]
+
+\[
+\leq B \Delta x_j + B (c-x_{j-1} + x_j -c) = 2B \Delta x_j \leq 2B \lambda_\tau
+\] 
+
+\[\overline{S_\tau} - (\overline{S_{\tau'}} + \overline{S_{\tau''}} \leq 2B \lambda_\tau\]
+
+\[\underline{S_\tau} \geq (\underline{S_{\tau'}} + \underline{S_{\tau''}} - 2B \lambda_\tau\]
+
+\[\overline{S_\tau} - \underline{S_\tau} \leq \overline{S_{\tau'}} + \overline{S_{\tau'}} + 2B \lambda_\tau - S_{\tau'} - S_{\tau''} = (\overline{S_{\tau'}} - \underline{S_{\tau'}}) + (\overline{S_{\tau''}} - \underline{S_{\tau''}}) + 4B\lambda_\tau < \varepsilon\]
+
+\[
+\overline{S_{\tau'}} - \underline{S_{\tau'}} < \frac{\varepsilon}{3}
+\]
+
+\[
+\overline{S_{\tau''}} - \underline{S_{\tau''}} < \frac{\varepsilon}{3}
+\]
+
+так как берём минимальную дельту.
 
 Докажем уже наконец-то, что $\displaystyle \int_a^b f = \int_a^c f + \int_c^b f $
 
