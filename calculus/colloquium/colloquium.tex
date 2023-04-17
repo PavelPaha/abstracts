@@ -74,7 +74,7 @@
 \item \hyperlink{p2}{\sout{Интегрируемость суммы функций}}
 \item \hyperlink{p3}{\sout{Ограниченность интегрируемой функции}}
 \item \hyperlink{p4}{\sout{Пример ограниченной неинтегрируемой функции}}
-\item \hyperlink{p5}{\sout{Суммы Дарбу и их свойства. Критерий интегрируемости}}
+\item \hyperlink{p5}{\sout{Суммы Дарбу и их свойства}}. Критерий интегрируемости
 \item \hyperlink{p6}{\sout{Аддитивность интеграла по множеству}}
 \item \hyperlink{p7}{\sout{Интегрируемость непрерывной функции}}
 \item \hyperlink{p8}{\sout{Интегрируемость монотонной функции}}
@@ -226,7 +226,7 @@ m_i \Delta x_i \leq f(\xi_i) \Delta x_i \leq M_i \Delta x_i
 Складывая эти неравенства, получаем
 
 \[
-\sum_{i=1}^n m_i \Delta x_i \leq \sum_{i=1}^n f(\xi+i) \Delta x_i \leq \sum_{i=1}^n M_i \Delta x_i
+\sum_{i=1}^n m_i \Delta x_i \leq \sum_{i=1}^n f(\xi_i) \Delta x_i \leq \sum_{i=1}^n M_i \Delta x_i
 \]
 
 Это в точности то, что нужно было доказать.
@@ -261,7 +261,7 @@ m_i \Delta x_i \leq f(\xi_i) \Delta x_i \leq M_i \Delta x_i
 
 \item Если разбиение $\tau_2$ - измельчение разбиения $\tau_1$, то 
 \[
-\underline{S_{\tau_1}} \leq \underline{S_{\tau_2}} \leq \overline{S_{\tau_1}} \leq \overline{S_{\tau_1}}
+\underline{S_{\tau_1}} \leq \underline{S_{\tau_2}} \leq \overline{S_{\tau_2}} \leq \overline{S_{\tau_1}}
 \]
 То есть при измельчении разбиения нижняя сумма Дарбу не уменьшается, а верхняя не увеличивается.
 
@@ -269,9 +269,9 @@ m_i \Delta x_i \leq f(\xi_i) \Delta x_i \leq M_i \Delta x_i
 
 \[ \Delta x_i = [x_{i-1}, x'] + [x', x_i] \]
 
-Пусть $m_i' = \inf_{x \in [x_{i-1}, x']} f(x), m_i'' = \inf_{x \in [x', x_{i}]}$. Тогда очевидно $m_i' \geq m_i, m_i'' \leq m_i$.
+Пусть $m_i' = \inf_{x \in [x_{i-1}, x']} f(x), m_i'' = \inf_{x \in [x', x_{i}]}$. Тогда очевидно $m_i' \geq m_i, m_i'' \geq m_i$.
 
-В суммах $\underline{S_{\tau_2}}$ и $\underline{S_{\tau_1}}$ равны все соответствующие слагаемы, кроме тех, которые связаны с отрезком $[x_{i-1}, x_i]$.
+В суммах $\underline{S_{\tau_2}}$ и $\underline{S_{\tau_1}}$ равны все соответствующие слагаемые, кроме тех, которые связаны с отрезком $[x_{i-1}, x_i]$.
 
 Поэтому $\underline{S_{\tau_2}} - \underline{S_{\tau_1}} = m_i'(x'-x_{i-1}) + m_i''(x_i-x') - m_i(x_i-x_{i-1})$, где $m_i' \geq m_i, m_i'' \geq m_i$.
 
@@ -290,7 +290,7 @@ m_i \Delta x_i \leq f(\xi_i) \Delta x_i \leq M_i \Delta x_i
 \underline{S_{\tau'}} \leq \overline{S_{\tau''}}
 \]
 
-\textbf{Доказательство.} Пусть $\tau$ - измельчённое разбиение и $\tau'$, и $\tau''$. Тогда $\underline{S_{\tau'}} \leq S_\tau \leq \overline{S_\tau}.$
+\textbf{Доказательство.} Пусть $\tau$ - измельчённое разбиение и $\tau'$, и $\tau''$. Тогда $\underline{S_{\tau'}} \leq \underline{S_\tau} \leq \overline{S_\tau}.$
 
 \[
 \overline{S_\tau} \leq \overline{S_{\tau''}}
@@ -313,7 +313,6 @@ m_i \Delta x_i \leq f(\xi_i) \Delta x_i \leq M_i \Delta x_i
 \begin{definit}
 \hypertarget{p6}{}
 \subsection*{Аддитивность интеграла по множеству}
-
 
 Пусть $c \in (a, b)$ и функция $f(x)$ определена и интегрируема на отрезке $[a, b]$. Тогда интеграл функции $f(x)$ на отрезке $[a, b]$ равен сумме интегралов функции $f(x)$ на отрезках $[a, c]$ и $[c, b]$:
 
@@ -345,7 +344,7 @@ m_i \Delta x_i \leq f(\xi_i) \Delta x_i \leq M_i \Delta x_i
 Из этого следует, что:
 
 \[
-(\overline{S_{\tau'}} + \overline{S_{\tau''}} - (\underline{S_{\tau'}} + \underline{S_{\tau''}}) < \varepsilon
+(\overline{S_{\tau'}} + \overline{S_{\tau''}} )- (\underline{S_{\tau'}} + \underline{S_{\tau''}}) < \varepsilon
 \]
 
 \[
@@ -377,16 +376,16 @@ m_i \Delta x_i \leq f(\xi_i) \Delta x_i \leq M_i \Delta x_i
 \]
 
 \[
-\overline{S_\tau} - (\overline{S_{\tau'}} + \overline{S_{\tau''}}) = M_j \Delta x_j - \left( \sup_{[x_{j-1}, c]} f(x) \right) (x-x_{j-1}) + \left( \sup_{[c, x_j]} f(x) \right)(x_j-c) \leq
+\overline{S_\tau} - (\overline{S_{\tau'}} + \overline{S_{\tau''}}) = M_j \Delta x_j - \left( \sup_{[x_{j-1}, c]} f(x) \right) (c-x_{j-1}) + \left( \sup_{[c, x_j]} f(x) \right)(x_j-c) \leq
 \]
 
 \[
 \leq B \Delta x_j + B (c-x_{j-1} + x_j -c) = 2B \Delta x_j \leq 2B \lambda_\tau
 \] 
 
-\[\overline{S_\tau} - (\overline{S_{\tau'}} + \overline{S_{\tau''}} \leq 2B \lambda_\tau\]
+\[\overline{S_\tau} - (\overline{S_{\tau'}} + \overline{S_{\tau''}}) \leq 2B \lambda_\tau\]
 
-\[\underline{S_\tau} \geq (\underline{S_{\tau'}} + \underline{S_{\tau''}} - 2B \lambda_\tau\]
+\[\underline{S_\tau} \geq (\underline{S_{\tau'}} + \underline{S_{\tau''}}) - 2B \lambda_\tau\]
 
 \[\overline{S_\tau} - \underline{S_\tau} \leq \overline{S_{\tau'}} + \overline{S_{\tau'}} + 2B \lambda_\tau - S_{\tau'} - S_{\tau''} = (\overline{S_{\tau'}} - \underline{S_{\tau'}}) + (\overline{S_{\tau''}} - \underline{S_{\tau''}}) + 4B\lambda_\tau < \varepsilon\]
 
@@ -414,6 +413,11 @@ $ \left| \int_a^c - S_{\tau'} \right| < \frac{\varepsilon}{3}$
 
 $\left| \int_c^b - S_{\tau''} \right| < \frac{\varepsilon}{3}$
 
+
+А вот у Зорича покомпактнее:
+
+\includegraphics[width=18cm]{zorich1.png}
+\includegraphics[width=18cm]{zorich2.png}
 \end{definit}
 
 \begin{definit}
@@ -437,7 +441,7 @@ $f$ непрерывна на $[a,b]$, значит она равномерно 
 Теперь поймём, что 
 
 \[
-\forall \varepsilon' > 0 \quad \exists \delta'(\varepsilon) > 0 \quad \forall \tau \quad (\lambda_\tau < \delta' \Rightarrow \overline{S_\tau} - \underline{S_\tau} < \varepsilon')
+\forall \varepsilon' > 0 \quad \exists \delta'(\varepsilon') > 0 \quad \forall \tau \quad (\lambda_\tau < \delta' \Rightarrow \overline{S_\tau} - \underline{S_\tau} < \varepsilon')
 \]
 
 Рассмотрим разбиение $\tau$, у которого $\lambda_\tau < \delta$ ($\delta$ берём из определения равномерной непрерывности).
@@ -453,12 +457,12 @@ $f$ непрерывна на $[a,b]$, значит она равномерно 
 И по равномерной непрерывности получаем
 
 \[
-|f(\xi_j)' - f(\xi_j'')| < \varepsilon
+|f(\xi_j') - f(\xi_j'')| < \varepsilon
 \]
 
 \hypertarget{supinf}{}
 \[
-|f(\xi_j)' - f(\xi_j'')| < \varepsilon \Leftrightarrow M_j - m_j < \varepsilon
+|f(\xi_j') - f(\xi_j'')| < \varepsilon \Leftrightarrow M_j - m_j < \varepsilon
 \]
 
 Докажем это утверждение ($sup - inf$):
@@ -530,11 +534,11 @@ M_j - m_j < \varepsilon
 \]
 
 \[
-\overline{S_\tau} - \underline{S_\tau} = \sum_{k=1}^n (M_k-m_k) \Delta x_k = \sum_{k=1}^n (f(x_k) - f(x_{k-1})) \Delta x_k \leq \delta \sum_{k=1}^n (f(x_k) - f(x_{k-1})
+\overline{S_\tau} - \underline{S_\tau} = \sum_{k=1}^n (M_k-m_k) \Delta x_k = \sum_{k=1}^n (f(x_k) - f(x_{k-1})) \Delta x_k \leq \delta \sum_{k=1}^n (f(x_k) - f(x_{k-1}))
 \]
 
 \[
-\sum_{k=1}^n (f(x_k) - f(x_{k-1})) = \delta (f(b)-f(a))
+\delta \sum_{k=1}^n (f(x_k) - f(x_{k-1})) = \delta (f(b)-f(a))
 \]
 
 Ну и чтобы $\delta (f(b)-f(a))$ было меньше $\varepsilon$, возьмём $\delta < \frac{\varepsilon}{f(b)-f(a)}$.
@@ -599,7 +603,7 @@ $f$ интегрируема $\Rightarrow$ если $\lambda_\tau < \delta$, т�
 
 Это мы так взяли $\varepsilon = \delta^2$.
 
-Хотим оценить $\overline{S_\tau(\Phi(f))} - \underline{S_\tau(\Phi(f))} = \sum_{k=1}^n (M_k(\Phi(f)) - m_k(\Phi(f)))$
+Хотим оценить $\overline{S_\tau(\Phi(f))} - \underline{S_\tau(\Phi(f))} = \sum_{k=1}^n (M_k(\Phi(f)) - m_k(\Phi(f))) \Delta x_k$
 
 Имеем здесь 2 семейства индексов:
 
@@ -635,9 +639,6 @@ f(\xi_k') - f(\xi_k'') < \delta \Rightarrow | \Phi(f(\xi')) - \Phi(f(\xi''))| < 
 \]
 
 
-\[
-k \in J \Rightarrow M_k(\Phi(f)) - m_k(\Phi(f) < \delta
-\]
 
 \[
  \delta \sum_{k \in J} \Delta x_k \leq \overline{S_\tau(f)} - \underline{S_\tau(f)} < \delta^2
