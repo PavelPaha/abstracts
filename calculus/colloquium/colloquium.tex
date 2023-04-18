@@ -840,26 +840,36 @@ x+C_1, x>0\\
 Пусть $u$ и $v$ непрерывны и кусочно-непрерывно дифференцируемы на $[a,b]$. Тогда
 
 \[
-\int_a^b udv = uv |_a^b - \int_a^b vdu
+\int_a^b udv = uv \bigg|_a^b - \int_a^b vdu
 \]
 
 \[
-uv |_a^b = u(b)v(b) - u(a)v(a)
+uv \bigg|_a^b = u(b)v(b) - u(a)v(a)
 \]
 \end{htheorem}
 
 \begin{hproof}\textbf{Доказательство.}
 
-По условиям теоремы, оба интеграла существуют как интегралы от кусочно непрерывных функций.
+Пусть $h(x) = u(x) \cdot v(x)$.
+Тогда 
 
 \[
-(uv)' = u'v + uv'
+h'(x) = u'(x)v(x) + u(x)v'(x)
 \]
 
-За исключением конечного числа точек, так как кусочная дифференцируемость.
+\[
+\int_a^b h'(x)dx = \int_a^b u(x)'v(x)dx + \int_a^b u(x)v'(x)dx
+\]
+
+А по формуле Ньютона-Лейбница:
 
 \[
-\int_a^b (uv)' = \int_a^b (u'v) + \int_a^b (uv')
+\int_a^b h'(x)dx = h(b) - h(a) = u(x)v(x) \bigg|_a^b
+\]
+Получаем 
+
+\[
+u(x)v(x) \bigg|_a^b = \int_a^b u(x)'v(x)dx + \int_a^b u(x)v'(x)dx
 \]
 \end{hproof}
 \end{definit}
@@ -873,7 +883,7 @@ uv |_a^b = u(b)v(b) - u(a)v(a)
 Пусть $f$ непрерывна на $[x_1, x_2]$, а $g$ непрерывно дифференцируема на $[t_1, t_2]$ и $g(t_1) = x_1, g(t_2) = x_2$ и $g(t) \in [x_1, x_2], t \in [t_1, t_2]$. Тогда
 
 \[
-\int_{x_1}^{x_2} f(x)dx = \int_{t_1}^{t_2} f(g(t)) d'(t)dt
+\int_{x_1}^{x_2} f(x)dx = \int_{t_1}^{t_2} f(g(t)) g'(t) dt
 \]
 \end{htheorem}
 
