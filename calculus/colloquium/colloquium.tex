@@ -616,14 +616,12 @@ $f$ интегрируема $\Rightarrow$ если $\lambda_\tau < \delta$, т�
 \begin{enumerate}
 \item $k \in I$:
 
-По лемме (\hyperlink{supinf}{$sup - inf$})
-
 \[
 f(\xi_k') - f(\xi_k'') < \delta \Rightarrow | \Phi(f(\xi')) - \Phi(f(\xi''))| < \varepsilon \Rightarrow
 \]
 
 \[
-\Rightarrow \text{по этой же лемме} \quad M_k(\Phi(f)) - m_k(\Phi(f)) < \varepsilon
+\Rightarrow \text{по лемме (\hyperlink{supinf}{$sup - inf$})} \quad M_k(\Phi(f)) - m_k(\Phi(f)) < \varepsilon
 \]
 
 \[
@@ -634,11 +632,7 @@ f(\xi_k') - f(\xi_k'') < \delta \Rightarrow | \Phi(f(\xi')) - \Phi(f(\xi''))| < 
 \overline{S_\tau(f)} - \underline{S_\tau(f)} < \delta^2
 \]
 
-\[
-\sum_{k \in J} \left( M_k(\Phi(f)) - m_k(\Phi(f)) \right) \Delta x_k < \varepsilon (b-a)
-\]
-
-
+Так как для каждого $k$ $M_k(f) - m_k(f) \geq \delta$, то
 
 \[
  \delta \sum_{k \in J} \Delta x_k \leq \overline{S_\tau(f)} - \underline{S_\tau(f)} < \delta^2
