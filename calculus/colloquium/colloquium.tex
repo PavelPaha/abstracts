@@ -703,10 +703,12 @@ $\Phi(x) = \int_a^x f(t)dt$ - интеграл с переменным верх�
 Предположим $x<y$:
 
 \[
-	|\Phi(x) - \Phi(y)| = \left| \int_a^x f(t)dt - \int_a^y dt \right| = \left| \int_x^y f(t)dt \right| \leq \begin{bmatrix}
-	\left| \sum f(\xi_k) \Delta x_k \right| \leq \sum \left| f(\xi_k) \right| \Delta x_k \\
-	\left| \sum f(\xi_k) \Delta x_k \right| \rightarrow |\int f| \\
-	 \sum \left| f(\xi_k) \right| \Delta x_k \rightarrow |\int f|
+	|\Phi(x) - \Phi(y)| = \left| \int_a^x f(t)dt - \int_a^y f(t) dt \right| = \left| \int_x^y f(t)dt \right| \leq 
+\]
+
+\[\leq \begin{bmatrix}
+	\left| \sum f(\xi_k) \Delta x_k \right| \leq \sum \left| f(\xi_k) \right| \Delta x_k \Rightarrow \\
+	\Rightarrow \left| \int f \right| \leq \int |f|
 	\end{bmatrix} \leq
 \]
  
@@ -1053,13 +1055,13 @@ $L =(x(t), y(t))$ спрямляемая и её длина равна $\int_{\a
 \]
 
 \[
-\leq [\text{не понял почему так}] \leq \sum_{k=1}^n \left| x'(\xi_k) - y'(\eta_k) \right| \Delta t_k
+\leq [\text{не понял почему так. UPD: понял - нарисуй вектора}] \leq \sum_{k=1}^n \left| y'(\xi_k) - y'(\eta_k) \right| \Delta t_k
 \]
 
 $y'$ непрерывна по условию $\Rightarrow$ ограничена. Тогда 
 
 \[
-\sum_{k=1}^n \left| x'(\xi_k) - y'(\eta_k) \right| \Delta t_k \leq \sum_{k=1}^n (M_k - m_k) \Delta t_k \leq \overline{S(y', \tau)} - \underline{S(y', \tau)}
+\sum_{k=1}^n \left| y'(\xi_k) - y'(\eta_k) \right| \Delta t_k \leq \sum_{k=1}^n (M_k - m_k) \Delta t_k \leq \overline{S(y', \tau)} - \underline{S(y', \tau)}
 \]
 
 $y'$ интегрируема, так как непрерывна $\Rightarrow \overline{S(y', \tau)} - \underline{S(y', \tau)} < \varepsilon$.
