@@ -1013,7 +1013,7 @@ m \int_a^b \Phi = 0 \\ M \int_a^b \Phi = 0
 Пусть $l$ - это какая-то ломаная. 
 
 \[
-|l| = \sum_{k=1}^n \sqrt{(x(t_k) - x(t_{k-1}))^2 + (y(t_k) - y(t_{k-1}))^2} = \sum_{k=1}^n \sqrt{(y'(\xi_k))^2 + (y'(\eta_k))^2} \Delta t_k
+|l| = \sum_{k=1}^n \sqrt{(x(t_k) - x(t_{k-1}))^2 + (y(t_k) - y(t_{k-1}))^2} = \sum_{k=1}^n \sqrt{(x'(\xi_k))^2 + (y'(\eta_k))^2} \Delta t_k
 \]
 
 \[
@@ -1030,7 +1030,7 @@ $L =(x(t), y(t))$ спрямляемая и её длина равна $\int_{\a
 
 
 \[
-|l| = [\text{теорема Лагранжа}] = \sum_{k=1}^n \sqrt{(x'(\xi_k))^2 + (y'(\eta_k))^2} \Delta t_k
+|l| = [\text{теорема Лагранжа: $f'(c) = \frac{f(b)-f(a)}{b-a}$ }] = \sum_{k=1}^n \sqrt{(x'(\xi_k))^2 + (y'(\eta_k))^2} \Delta t_k
 \]
 
 \[
@@ -1048,7 +1048,7 @@ $L =(x(t), y(t))$ спрямляемая и её длина равна $\int_{\a
 $y'$ непрерывна по условию $\Rightarrow$ ограничена. Тогда 
 
 \[
-\sum_{k=1}^n \left| y'(\xi_k) - y'(\eta_k) \right| \Delta t_k \leq \sum_{k=1}^n (M_k - m_k) \Delta t_k \leq \overline{S(y', \tau)} - \underline{S(y', \tau)}
+\sum_{k=1}^n \left| y'(\xi_k) - y'(\eta_k) \right| \Delta t_k \leq \sum_{k=1}^n (M_k - m_k) \Delta t_k = \overline{S(y', \tau)} - \underline{S(y', \tau)}
 \]
 
 $y'$ интегрируема, так как непрерывна $\Rightarrow \overline{S(y', \tau)} - \underline{S(y', \tau)} < \varepsilon$.
