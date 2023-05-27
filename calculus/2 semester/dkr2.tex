@@ -60,13 +60,13 @@
 
 \subsection*{1.$\displaystyle \lim_{n \rightarrow \infty} \sum_{k=1}^n \frac{\sqrt{k}}{n \sqrt{n} + k \sqrt{k}}$}
 
-$\displaystyle \sum_{k=1}^n \frac{\sqrt{k}}{n \sqrt{n} + k \sqrt{k}} = \frac{1}{n} \sum_{k=1}^n \frac{n \sqrt{k}}{n \sqrt{n} + k \sqrt{k}} = \frac{\sqrt{k}}{\sqrt{n} + \frac{k \sqrt{k}}{n}} = \frac{1}{\frac{\sqrt{n}}{\sqrt{k}} + \frac{k}{n}} = \frac{1}{n} \sum_{k=1}^n \frac{1}{ \left( \frac{k}{n} \right)^{-\frac{1}{2}} + \frac{k}{n}} = \frac{1}{n} \sum_{k=1}^n f \left( \frac{k}{n} \right)$
+$\displaystyle \sum_{k=1}^n \frac{\sqrt{k}}{n \sqrt{n} + k \sqrt{k}} = \sum_{k=1}^n  \frac{1}{n} \sum_{k=1}^n \frac{n \sqrt{k}}{n \sqrt{n} + k \sqrt{k}} = \sum_{k=1}^n  \frac{\sqrt{k}}{\sqrt{n} + \frac{k \sqrt{k}}{n}} = \sum_{k=1}^n \frac{1}{\frac{\sqrt{n}}{\sqrt{k}} + \frac{k}{n}} = \frac{1}{n} \sum_{k=1}^n \frac{1}{ \left( \frac{k}{n} \right)^{-\frac{1}{2}} + \frac{k}{n}} = \frac{1}{n} \sum_{k=1}^n f \left( \frac{k}{n} \right)$
 
 \[ \displaystyle f(x) = \frac{1}{x^{-\frac{1}{2}} + x} = \frac{ \sqrt{x} }{1 + x \sqrt{x}}
 \]
 
 \[
-\displaystyle \lim_{n \rightarrow \infty} \frac{1}{n[;bvcdv} \sum_{k=1}^n f \left(\frac{k}{n} \right) = \int_0^1 f(x) dx = \int_0^1 \frac{ \sqrt{x} }{1 + x \sqrt{x}} dx
+\displaystyle \lim_{n \rightarrow \infty} \frac{1}{n} \sum_{k=1}^n f \left(\frac{k}{n} \right) = \int_0^1 f(x) dx = \int_0^1 \frac{ \sqrt{x} }{1 + x \sqrt{x}} dx
 \]
 
 \[
@@ -101,26 +101,75 @@ u = 1-t+t^2 \\ du = (2t-1)dt
 
 \[ \int \sqrt{4-x^2} dx  = \begin{bmatrix}
 x = 2\sin t \\ dx = 2 \cos t dt \\ t = \arcsin(\frac{x}{2})
-\end{bmatrix} = 2 \int \cos^2 t dt = 4 \int \frac{1+\cos 2t}{2} dt = \sin 2t + 2t
+\end{bmatrix} = 2 \int \cos^2 t dt = 4 \int \frac{1+\cos 2t}{2} dt = \sin 2t + 2t + C =
 \] 
 
-\[\int_0^\frac{\pi}{2} \sqrt{4-x^2} dx = (\sin 2t + 2t) = 
-\] 
+\[ = \sin \left( 2 \arcsin \left( \frac{x}{2}\right) \right) + 2 \arcsin \left( \frac{x}{2} \right) + C\]
 
-\[ =
-\left( \sin \left( 2 \arcsin \left( \frac{x}{2}\right) \right) + 2 \arcsin \left( \frac{x}{2} \right) = 2 \sin \left( \arcsin \left( \frac{x}{2} \right) \right) \cos \left( \arcsin \left( \frac{x}{2}\right) \right) + 2 \arcsin \left( \frac{x}{2} \right) \right) \bigg|_0^\frac{\pi}{2} = 
+\[\int_0^1 \sqrt{4-x^2} dx  =
+\left( \sin \left( 2 \arcsin \left( \frac{x}{2}\right) \right) + 2 \arcsin \left( \frac{x}{2} \right) \right) \bigg|_0^1 = \]
+
+\[ =  \left( 2 \sin \left( \arcsin \left( \frac{x}{2} \right) \right) \cos \left( \arcsin \left( \frac{x}{2}\right) \right) + 2 \arcsin \left( \frac{x}{2} \right) \right) \bigg|_0^1 = 
 \]
 
 \[
-= \left( 2 \frac{x}{2} \sqrt{1-\frac{x^2}{4}} + 2 \arcsin \left( \frac{x}{2} \right) \right) \bigg|_0^\frac{\pi}{2}
-= \left( \frac{x}{2} \sqrt{4-x^2} + 2 \arcsin \left( \frac{x}{2} \right) \right) \bigg|_0^\frac{\pi}{2}
+= \left( 2 \frac{x}{2} \sqrt{1-\frac{x^2}{4}} + 2 \arcsin \left( \frac{x}{2} \right) \right) \bigg|_0^1
+= \left( \frac{x}{2} \sqrt{4-x^2} + 2 \arcsin \left( \frac{x}{2} \right) \right) \bigg|_0^1
 =
 \]
 
 \[
 =
-2 \arcsin \left( \frac{\pi}{4} \right) + \frac{\pi}{4} \sqrt{4 - \frac{\pi^2}{4}}
+\frac{\sqrt{3}}{2} + 2 \arcsin \left( \frac{1}{2} \right) = \frac{\sqrt{3}}{2} + \frac{\pi}{3}
 \]
 
-\textit{Ответ: $2 \arcsin \left( \frac{\pi}{4} \right) + \frac{\pi}{4} \sqrt{4 - \frac{\pi^2}{4}}$}
+\textit{Ответ:$\frac{\sqrt{3}}{2} + \frac{\pi}{3}$}
+
+\subsection*{$\begin{cases} x(t) = 4( \cos t + t \sin t) \\ y(t) = 4 ( \sin t - t \cos t) \end{cases} 0 \leq t \leq 2 \pi$}
+
+\[L = \left( x(t), y(t) \right)\]
+\[|L| = \int_0^{2 \pi} \sqrt{(x'(t))^2 + (y'(t))^2} dt\]
+
+
+\[ x'(t) = 4(- \sin t + \sin t + t \cos t) = 4 t \cos t\]
+
+\[ y'(t) = 4(\cos t - \cos t + t \sin t) = 4 t \sin t\]
+
+\[ |L| = \int_0^{2 \pi} \sqrt{(4t)^2 (\sin^2 t + \cos^2 t)} dt = \int _0^{2 \pi} 4t dt = 2t^2 \bigg|_0^{2 \pi} = 8 \pi^2 \]
+
+\textit{Ответ: $8 \pi^2$}
+
+\subsection*{5. $\displaystyle \lim_{\varepsilon \rightarrow +0} \int_{\frac{\varepsilon}{2}}^{\ln (1+\varepsilon)} \frac{1}{x} \arctan \frac{x+1}{\sin x} dx$}
+
+$\Phi(x) =\frac{1}{x}$ - положительная функция на отрезке $[\frac{\varepsilon}{2}; \ln (1+\varepsilon)]$,
+$f(x) = \arctan \frac{x+1}{\sin x}$ - непрерывная на этом же отрезке при достаточно малом $\varepsilon$.
+ 
+Тогда при достаточно малых $\varepsilon$ справедлива теорема о среднем и тогда исходный интеграл под знаком предела равен $\mu \int_{\frac{\varepsilon}{2}}^{\ln (1+\varepsilon)} \frac{1}{x} dx$, где $\mu \in [\min f, \max f]$.
+
+Найдём $\min f$ и $\max f$:
+
+\[
+\left( \arctan \frac{x+1}{\sin x} \right)' = \frac{\left(\frac{x+1}{\sin x}\right)'}{1+\left( \frac{x+1}{\sin x} \right)^2} =  \frac{\sin x - (x+1) \cos x}{1+\left( \frac{x+1}{\sin x} \right)^2}
+\]
+
+Посмотрим на $\sin x - (x+1) \cos x$. При достаточно малых $\varepsilon$, например, меньше, чем $\frac{\pi}{3}$ имеем $\sin x < \frac{1}{2}$, $\cos x > \frac{\sqrt{3}}{2}$, $x+1>1$.
+Поэтому 
+
+\[
+\sin x - (x+1) \cos x < \frac{1}{2} - \frac{\sqrt{3}}{2} < 0
+\]
+
+Значит $\min f = f \left( \frac{\varepsilon}{2} \right), \max f = f \left( \ln (1+ \varepsilon) \right)$.
+
+Устремляя $\varepsilon$ к нулю и учитывая, что $\mu \in \left[ f \left( \frac{\varepsilon}{2} \right), f \left( \ln (1+ \varepsilon) \right) \right]$ и то, что концы отрезка стремятся к нулю, получаем, что 
+
+\[\mu = 
+\lim_{x \rightarrow 0} \arctan \frac{x+1}{\sin x} = \arctan \left( \lim_{x \rightarrow 0} \frac{x+1}{\sin x} \right) = \frac{\pi}{2}\]
+
+\[\displaystyle \lim_{\varepsilon \rightarrow +0} \int_{\frac{\varepsilon}{2}}^{\ln (1+\varepsilon)} \frac{1}{x} \arctan \frac{x+1}{\sin x} dx = \lim_{\varepsilon \rightarrow +0}  \frac{\pi}{2} \int_{\frac{\varepsilon}{2}}^{\ln (1+\varepsilon)} \frac{1}{x} dx = \lim_{\varepsilon \rightarrow +0} \frac{\pi}{2} \left( \ln x \right) \bigg|_{\frac{\varepsilon}{2}}^{\ln (1+\varepsilon} = 
+\]
+
+\[
+= \lim_{\varepsilon \rightarrow +0} \frac{\pi}{2}\left( \ln \left( \ln (1+ \varepsilon) \right) - \ln \left( \frac{\varepsilon}{2} \right) \right) = \lim_{\varepsilon \rightarrow +0} \frac{\pi}{2}\left( \ln \left( \frac{\ln (1+\varepsilon)}{\frac{\varepsilon}{2}} \right) \right) = \frac{\pi}{2} \ln 2
+\]
 \end{document}
