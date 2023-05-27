@@ -1,0 +1,199 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[12pt]{extsizes}
+\everymath{\displaystyle}
+
+\usepackage[english,russian]{babel}
+\usepackage[left=10mm, top=10mm, right=10mm, bottom=20mm, nohead, nofoot]{geometry}
+\usepackage{amsmath,amsfonts,amssymb} % математический пакет
+\headsep=10mm
+
+\usepackage[most]{tcolorbox} % для управления цветом
+% НАСТРОЙКИ
+%теорема
+\definecolor{theorem-color}{gray}{0.90} % уровень прозрачности (1 - максимум)
+\newtcolorbox{htheorem}{colback=theorem-color,grow to right by=-4mm,grow to left by=-4mm,
+    boxrule=0pt,boxsep=0pt,breakable} % настройки области с изменённым фоном
+
+%определение
+\definecolor{def-color}{gray}{0.98}
+\newtcolorbox{definit}{colback=def-color,grow to right by=-4mm,grow to left by=-4mm,
+    boxrule=0pt,boxsep=0pt,breakable} % настройки области с изменённым фоном
+
+%доказательсвто теоремы
+\definecolor{proof-color}{gray}{0.95} % уровень прозрачности (1 - максимум)
+\newtcolorbox{hproof}{colback=proof-color,grow to right by=-1mm,grow to left by=-1mm,
+    boxrule=0pt,boxsep=0pt,breakable} % настройки области с изменённым фоном
+
+%замечания, следствия
+\definecolor{consectary-color}{gray}{0.95} % уровень прозрачности (1 - максимум)
+\newtcolorbox{cns}{colback=consectary-color,grow to right by=-4mm,grow to left by=-4mm,
+    boxrule=0pt,boxsep=0pt,breakable} % настройки области с изменённым фоном
+
+
+
+\usepackage{fancybox,fancyhdr}
+\pagestyle{fancy}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, allcolors=[RGB]{010 090 200}} % цвет ссылок 
+\newcommand{\lr}[1]{\left({#1}\right)} % команда для скобок
+
+\author{Васильев Павел}
+%\linespread{1}
+\usepackage{amsmath}
+
+\usepackage{graphicx}
+\usepackage{ifpdf}
+\ifpdf
+\DeclareGraphicsRule{*}{mps}{*}{}
+\fi
+\usepackage{graphicx}
+\usepackage{color}
+\graphicspath{ {images/} }
+
+%\renewcommand{\familydefault}{\sfdefault}
+
+\begin{document}
+
+\section*{HOW TO заботать зачёт по матанализу 2}
+
+\section*{Интегралы}
+
+\begin{hproof}
+Пусть $f(x)$ собственно интегрируема на любом $[a,b] (b>a)$. Тогда
+\[
+\int_a^{+\infty} f(x)dx = \lim_{b \rightarrow {+\infty}} \int_a^b f(x)dx
+\]
+
+\end{hproof}
+
+\begin{hproof}Если $f(x)$ не ограничена в окрестности точки $b$ и собственно интегрируема на $[a,b-\varepsilon] (\varepsilon > 0)$, то 
+\[
+\int_a^b f(x)dx = \lim_{\varepsilon \rightarrow 0} \int_a^{b-\varepsilon} f(x)dx
+\]
+
+\end{hproof}
+
+
+\begin{hproof}
+$\int_a^{+\infty} f(x)dx$ сходится, если $\int_a^{+\infty} |f(x)|dx$ сходится.
+\end{hproof}
+
+\subsection*{Признаки сравнения}
+
+\begin{hproof}
+\textbf{1 признак сравнения}
+
+Если:
+\begin{enumerate}
+\item $|f(x)| \leq F(x)$
+\item $\int_a^{+\infty} F(x)dx$ сходится
+\end{enumerate}
+
+Тогда $\int_a^{+\infty} f(x)dx$ сходится абсолютно.
+\end{hproof}
+
+\begin{hproof}
+\textbf{2 признак сравнения}
+
+Пусть $\psi(x) > 0, \phi(x) = O^*(\psi(x))$ при $x \rightarrow +\infty$. 
+
+\[\phi(x) = O^*(\psi(x)) \Leftrightarrow \lim_{x \rightarrow {+\infty}} \frac{\phi(x)}{\psi(x)} = c \neq 0\]
+Тогда $\int_a^{+\infty} \psi(x) dx$ и $\int_a^{+\infty} \phi(x)dx$ сходятся и расходятся одновременно.
+
+\end{hproof}
+
+\begin{hproof}
+\textbf{3 признак сравнения}
+
+\begin{itemize}
+\item Если $f(x) = O^*\left( \frac{1}{x^p} \right)$ при $x \rightarrow +\infty$ то
+
+\begin{enumerate}
+\item $p>1 \Rightarrow $ сходится; 
+\item $p \leq 1 \Rightarrow $ расходится.
+\end{enumerate}
+
+\item Если $f(x) = O^*\left( \frac{1}{(x-b)^p} \right)$ при $x \rightarrow b+0$, то $\int_b^a f(x)dx$:
+
+\begin{enumerate}
+\item при $p \geq 1$ расходится;
+\item при $p < 1$ сходится.
+\end{enumerate}
+
+\end{itemize}
+\end{hproof}
+
+\section*{Ряды}
+
+\subsection*{Признаки сходимости}
+
+\begin{hproof}\textbf{Д'Аламбера}
+
+Если с некоторого момента $\frac{a_{n+1}}{a_n} \leq q < 1$, то сходится.
+Если $\frac{a_{n+1}}{a_n} \geq q > 1$, то расходится.
+При $q = 1$ непонятно.
+
+\end{hproof}
+
+\begin{hproof}\textbf{Коши}
+
+$\lim_{n \rightarrow \infty} \sqrt[n]{a^n} = q$.
+
+\begin{itemize}
+\item $q<1 \Rightarrow$ сходится.
+\item $q>1 \Rightarrow$ расходится.
+\end{itemize}
+\end{hproof}
+
+
+\begin{hproof}\textbf{Признак сравнения для знакопостоянных рядов}
+
+$ \forall n > N: b_n \geq a_n$ и $\sum_{n=1}^\infty b_n$ сходится $\Rightarrow \sum_{n=1}^\infty a_n$ сходится.
+
+$\sum_{n=1}^\infty \frac{1}{n^k}$:
+\begin{enumerate}
+\item сходится при $k>1$
+\item расходится при $k \leq 1$
+\end{enumerate}
+\end{hproof}
+
+\begin{hproof}\textbf{Признак Лейбница для знакочередующихся рядов}
+
+Если ряд знакочередующийся и $\lim_{n \rightarrow + \infty} |a_n| = 0$ и $|a_n|$ убывают монотонно, то ряд $\sum_{n=1}^{\infty} a_n$ сходится.
+\end{hproof}
+
+\subsection*{Признаки равномерной сходимости}
+
+\begin{hproof}\textbf{Признак Вейерштрасса}
+
+
+Если существует $a_n$ --- числовая последовательность такая, что $|f_n(x)| \leq a_n \quad \forall n \in \mathbb{N} \forall x \in X$ и $\sum_{n=1}^\infty$ сходится. Тогда $\sum_{n=1}^\infty f_n(x)dx$ равномерно сходится на $X$.
+\end{hproof}
+
+\begin{hproof}\textbf{Признак Дирихле}
+
+Если $\sum_{n=1}^\infty a_n(x)$ ограничена в совокупности на $X$ и $b_n(x)$ монотонна $\forall x \in X$ и равномерно сходится к 0, то $\sum_{n=1}^\infty a_n(x)b_n(x)$ равномерно сходится на $X$.
+
+
+\end{hproof}
+
+\begin{hproof}\textbf{Признак Абеля}
+
+Пусть $\sum_{n=1}^\infty a_n(x)$ равномерно сходится на $X$ и $|b_n(x)|$ ограничена в совокупности и $b_n(x)$ монотонна по $n$. 
+
+Тогда $\sum_{n=1}^\infty a_n(x)b_n(x)$ сходится равномерно на $X$.
+\end{hproof}
+
+\subsection*{Функциональные последовательности}
+
+\begin{hproof}
+Пусть  $f(x) = \lim_{n \rightarrow + \infty} f_n(x)$.
+Последовательность $\{ f_n(x) \}$ равномерно сходится на множестве $E$ 
+
+к $f(x) \Leftrightarrow \lim_{n \rightarrow +\infty} \sup_{x \in E} |f_n(x) - f(x)| = 0$
+\end{hproof}
+
+\end{document}
