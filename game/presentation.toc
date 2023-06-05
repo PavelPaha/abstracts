@@ -1,0 +1,7 @@
+\babel@toc {russian}{}\relax 
+\beamer@sectionintoc {1}{Описание}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{О чём игра}{2}{0}{1}
+\beamer@subsectionintoc {1}{2}{Референсы}{3}{0}{1}
+\beamer@subsectionintoc {1}{3}{Геймплей и цели}{4}{0}{1}
+\beamer@subsectionintoc {1}{4}{Скриншоты игры}{5}{0}{1}
+\beamer@subsectionintoc {1}{5}{Роли в команде}{8}{0}{1}

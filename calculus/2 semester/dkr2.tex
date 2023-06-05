@@ -51,7 +51,6 @@
 \usepackage{graphicx}
 \usepackage{color}
 \graphicspath{ {images/} }
-
 %\renewcommand{\familydefault}{\sfdefault}
 
 \begin{document}
@@ -60,7 +59,7 @@
 
 \subsection*{1.$\displaystyle \lim_{n \rightarrow \infty} \sum_{k=1}^n \frac{\sqrt{k}}{n \sqrt{n} + k \sqrt{k}}$}
 
-$\displaystyle \sum_{k=1}^n \frac{\sqrt{k}}{n \sqrt{n} + k \sqrt{k}} = \sum_{k=1}^n  \frac{1}{n} \sum_{k=1}^n \frac{n \sqrt{k}}{n \sqrt{n} + k \sqrt{k}} = \sum_{k=1}^n  \frac{\sqrt{k}}{\sqrt{n} + \frac{k \sqrt{k}}{n}} = \sum_{k=1}^n \frac{1}{\frac{\sqrt{n}}{\sqrt{k}} + \frac{k}{n}} = \frac{1}{n} \sum_{k=1}^n \frac{1}{ \left( \frac{k}{n} \right)^{-\frac{1}{2}} + \frac{k}{n}} = \frac{1}{n} \sum_{k=1}^n f \left( \frac{k}{n} \right)$
+$\displaystyle \sum_{k=1}^n \frac{\sqrt{k}}{n \sqrt{n} + k \sqrt{k}} = \sum_{k=1}^n  \frac{1}{n} \frac{n \sqrt{k}}{n \sqrt{n} + k \sqrt{k}} = \frac{1}{n} \sum_{k=1}^n  \frac{\sqrt{k}}{\sqrt{n} + \frac{k \sqrt{k}}{n}} = \frac{1}{n}  \sum_{k=1}^n \frac{1}{\frac{\sqrt{n}}{\sqrt{k}} + \frac{k}{n}} = \frac{1}{n} \sum_{k=1}^n \frac{1}{ \left( \frac{k}{n} \right)^{-\frac{1}{2}} + \frac{k}{n}} = \frac{1}{n} \sum_{k=1}^n f \left( \frac{k}{n} \right)$
 
 \[ \displaystyle f(x) = \frac{1}{x^{-\frac{1}{2}} + x} = \frac{ \sqrt{x} }{1 + x \sqrt{x}}
 \]
@@ -84,11 +83,11 @@ u = 1-t+t^2 \\ du = (2t-1)dt
 \]
 
 \[
-= \frac{2}{3} \left(\ln |t+1| + \ln|1-t+t^2| \right) = 
+= \frac{2}{3} \left(\ln |t+1| + \ln|1-t+t^2| \right) + C = 
 \]
 
 \[
-= \frac{2}{3} \left( \ln |\sqrt{x}+1| + \ln|1-\sqrt{x}+x| \right)
+= \frac{2}{3} \left( \ln |\sqrt{x}+1| + \ln|1-\sqrt{x}+x| \right) + C
 \]
 
 \[
@@ -97,7 +96,8 @@ u = 1-t+t^2 \\ du = (2t-1)dt
 
 \textit{Ответ: $\frac{2 \ln 2}{3}$}
 
-\subsection*{2. $y = \sqrt{4-x^2}, y=0, 0 \leq x \leq \frac{\pi}{2}$}
+
+\subsection*{2. $y = \sqrt{4-x^2}, y=0, 0 \leq x \leq 1$}
 
 \[ \int \sqrt{4-x^2} dx  = \begin{bmatrix}
 x = 2\sin t \\ dx = 2 \cos t dt \\ t = \arcsin(\frac{x}{2})
@@ -124,6 +124,8 @@ x = 2\sin t \\ dx = 2 \cos t dt \\ t = \arcsin(\frac{x}{2})
 \]
 
 \textit{Ответ:$\frac{\sqrt{3}}{2} + \frac{\pi}{3}$}
+
+\includegraphics[width=18cm]{graphic.png}
 
 \subsection*{3. $\begin{cases} x(t) = 4( \cos t + t \sin t) \\ y(t) = 4 ( \sin t - t \cos t) \end{cases} 0 \leq t \leq 2 \pi$}
 
@@ -183,12 +185,12 @@ $f(x) = \arctan \frac{x+1}{\sin x}$ - непрерывная на этом же 
 \sin x - (x+1) \cos x < \frac{1}{2} - \frac{\sqrt{3}}{2} < 0
 \]
 
-Значит $\min f = f \left( \frac{\varepsilon}{2} \right), \max f = f \left( \ln (1+ \varepsilon) \right)$.
+Значит $\max f = f \left( \frac{\varepsilon}{2} \right), \min f = f \left( \ln (1+ \varepsilon) \right)$.
 
-Устремляя $\varepsilon$ к нулю и учитывая, что $\mu \in \left[ f \left( \frac{\varepsilon}{2} \right), f \left( \ln (1+ \varepsilon) \right) \right]$ и то, что концы отрезка стремятся к нулю, получаем, что 
+Устремляя $\varepsilon$ к нулю и учитывая, что $\mu \in \left[ f \left( \ln (1+ \varepsilon) \right), f \left( \frac{\varepsilon}{2} \right) \right]$ и то, что $\ln (1 + \varepsilon)$ и $\frac{\varepsilon}{2}$ стремятся к нулю, получаем (по лемме о двух милиционерах), что  
 
 \[\mu = 
-\lim_{x \rightarrow 0} \arctan \frac{x+1}{\sin x} = \arctan \left( \lim_{x \rightarrow 0} \frac{x+1}{\sin x} \right) = \frac{\pi}{2}\]
+\lim_{\varepsilon \rightarrow 0} \arctan \frac{\varepsilon+1}{\sin \varepsilon} = \arctan \left( \lim_{\varepsilon \rightarrow 0} \frac{\varepsilon+1}{\sin \varepsilon} \right) = \frac{\pi}{2}\]
 
 \[\displaystyle \lim_{\varepsilon \rightarrow +0} \int_{\frac{\varepsilon}{2}}^{\ln (1+\varepsilon)} \frac{1}{x} \arctan \frac{x+1}{\sin x} dx = \lim_{\varepsilon \rightarrow +0}  \frac{\pi}{2} \int_{\frac{\varepsilon}{2}}^{\ln (1+\varepsilon)} \frac{1}{x} dx = \lim_{\varepsilon \rightarrow +0} \frac{\pi}{2} \left( \ln x \right) \bigg|_{\frac{\varepsilon}{2}}^{\ln (1+\varepsilon)} = 
 \]
