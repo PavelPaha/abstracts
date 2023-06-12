@@ -196,4 +196,26 @@ $\sum_{n=1}^\infty \frac{1}{n^k}$:
 к $f(x) \Leftrightarrow \lim_{n \rightarrow +\infty} \sup_{x \in E} |f_n(x) - f(x)| = 0$
 \end{hproof}
 
+\subsection*{Дифференцируемость рядов}
+
+\begin{htheorem}
+Если
+\begin{enumerate}
+\item $f_n(x)$ непрерывно дифференцируема при $a < x < b$
+\item $\sum_{n=1}^\infty f'_n(x)$ - равномерно сходится на $(a,b)$
+\end{enumerate}
+Тогда $\left( \sum_{n=1}^\infty f_n(x) \right)' = \sum_{n=1}^\infty f'_n(x)$
+\end{htheorem}
+
+\begin{htheorem}
+Если 
+\begin{enumerate}
+\item $f_n(x)$ непрерывна
+\item $\sum_{n=1}^\infty f_n(x)$ сходится равномерно
+\end{enumerate}
+Тогда $\int_a^b \left( \sum_{n=1}^\infty f_n(x) \right) = \sum_{n=1}^\infty \left( \int_a^b f_n(x) dx \right)$
+\end{htheorem}
+
+
+
 \end{document}
