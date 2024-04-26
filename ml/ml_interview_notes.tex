@@ -529,13 +529,13 @@ $y = 0, p = 0.5$
 
 \[ Q(a, X) =  \sum_{i=1}^l \log (1+\exp(-y_i \langle w, x_i \rangle )\]
 
-Если наш алгоритм $b$ выдает вероятности, то вероятность того, что в выборке встретится $x_i$ с классом $y_i$ равна $b(x)^{[y+i = +1]}\cdot (1-b(x_i))^{[y_i=-1]}$
+Если наш алгоритм $b$ выдает вероятности, то вероятность того, что в выборке встретится $x_i$ с классом $y_i$ равна $b(x_i)^{[y_i = +1]}\cdot (1-b(x_i))^{[y_i=-1]}$
 
-\[ Q(a, X) = \prod_{i=1}^l b(x)^{[y_i = +1]}\cdot (1-b(x_i))^{[y_i=-1]} \]
+\[ Q(a, X) = \prod_{i=1}^l b(x_i)^{[y_i = +1]}\cdot (1-b(x_i))^{[y_i=-1]} \]
 
 Логарифмируем:
 
-\[ - \sum_{i=1}^l \left( [y+i = +1] \log b(x_i) + [y_i = -1] \log (1-b(x_i) \right) \rightarrow \min \]
+\[ - \sum_{i=1}^l \left( [y_i = +1] \log b(x_i) + [y_i = -1] \log (1-b(x_i) \right) \rightarrow \min \]
 
 Давайте преобразуем ответы $b$, чтобы он отдавал ответы в $[0,1]$:
 
@@ -566,7 +566,7 @@ $y = 0, p = 0.5$
 
 Для оценки вероятности тут стоит использовать $SoftMax$, которая производит нормировку вектора:
 
-\[ SoftMax(z_1, ..., z_K) \left( \frac{\exp(z_1)}{\sum_{k=1}^K \exp(z_k)}, ...,  \frac{\exp(z_K)}{\sum_{k=1}^K \exp(z_k)} \right) \]
+\[ SoftMax(z_1, ..., z_K) = \left( \frac{\exp(z_1)}{\sum_{k=1}^K \exp(z_k)}, ...,  \frac{\exp(z_K)}{\sum_{k=1}^K \exp(z_k)} \right) \]
 
 Тогда вероятность $k$-ого класса будет выражаться как 
 
@@ -1147,5 +1147,113 @@ $d(X_m, X_n)$ - мера близости кластеров.
 
 \includegraphics[width=7cm]{clasterization.png}
 \end{itemize}
+
+\section*{Что-то разное}
+
+\subsection*{Ранжирование}
+
+Подходы:
+
+\begin{enumerate}
+\item Pointwise $a(q_i, x_j) \approx \hat{y}_{ij}, y_{ij}$.
+\item Pairwise:
+$x_k, x_j$
+
+\[ a(1_i, x_k) \geq a(q_i, x_j) \]
+
+\item Listwise (шляпа какая-то, кажется)
+
+\[ \pi(d_1, ..., d_n) \]
+
+$\pi$ по перестановке показывает, насколько она правильно решает задачу ранжирования
+
+\end{enumerate}
+
+\subsubsection*{Признаки}
+
+\begin{enumerate}
+\item Признаки объектов ($x$)
+\item Признаки контекста (погода, время, место, недавние взаимодествия) ($z$)
+\item Другие признаки (например, скалярное произведение каких-то признаков)
+\end{enumerate}
+
+Сначала, чтобы решить задачу ранжирования, надо сначала придумать эвристику без ML, а потом применять ML, чтобы улучшить решение.
+
+\subsubsection*{Ранжирование на эвристиках}
+
+Живём в pairwise парадигме.
+
+\[ \mathbb{P}(d_k \text{  победит  } d_j) = \frac{d_k \text{  победит  } d_j} {d_k \text{  рядом с  } d_j}\]
+
+Если, например, в базе данных у нас нет столько данных, чтобы как то эту вероятность отразить, то надо сделать её равной $\frac{1}{2}$.
+
+\subsubsection*{Модель Брэдли-Терри}
+
+\[ \mathbb{P}(d_k \text{  победит  } d_j) = \frac{1}{1+\exp(- M(x_i, x_j))} \]
+
+Функция мэтча $M(x_k, x_j)$:
+\begin{itemize}
+\item $M(x_k, x_j) \in \mathbb{R}$
+\item $M(x_k, x_j) \rightarrow +\infty \Rightarrow \mathbb{P} (x_k \text{  победит  } x_j) = 1$
+
+$M(x_k, x_j) = 0 \Rightarrow \mathbb{P} (x_k \text{  победит  } x_j) = \frac{1}{2}$
+
+$M(x_k, x_j) \rightarrow -\infty \Rightarrow \mathbb{P} (x_k \text{  победит  } x_j) = 0$
+\item $M(x_k, x_j) = -M(x_j, x_k)$
+\end{itemize}
+
+Допустим, ранжируем документы, и для каждого документа есть константа $\gamma_k$.
+
+$M(x_k, x_j) = \gamma_k - \gamma_j$
+
+Будем пытаться максимизировать правдоподобие 
+
+\[ \sum_{(k, j)} \log \mathbb{P} (x_k \text{  победит  } x_j) \rightarrow \max_{\{\gamma_l\}} \]
+
+\subsubsection*{Pairwise logistic regression}
+
+Вот мы задали метчинг двух документов как просто разность двух чиселок, соответствующих этим документам. Хотим обучать логрегрессию, но хотим обучать не по этим чиселкам, а по каким-то весам, поэтому давайте мэтчинг будет такой:
+
+\[ M(x_k, x_j) = w^T (x_k - x_j) \]
+
+Но что-то признаки контеста мы так и не заиспользовали.
+
+
+\[ M(x_k, x_j) = w^T (x_k - x_j) + w_i^Tz_i \]
+
+Но это плохой мэтчинг, потому что тогда $M(x_k, x_j) \neq M(x_j, x_k)$.
+
+Поменяем мэтч...
+
+\subsubsection*{Blade-chest model}
+
+Пусть есть документ $d_j$ и для него есть вектор эмбедов $x_j$.
+
+Разделим эмбед на 2 части: $x_j^{blade}, x_j^{chest}$
+
+\[ M(x_k, x_i) = \|x_j^{blade} - x_k^{chest}\|^2 - \|x_k^{blade} - x_j^{chest}\|^2 \]
+
+А откуда брать эти все эмбеды? Из нейросети... Конец.
+
+$x_i^b - f_b(x_j, z_i)$
+
+$x_j^c = f_c(x_j, z_i)$
+
+\[ f_b = ReLU \left( B \cdot \begin{bmatrix} x_i \\ z_i \end{bmatrix} \right) \]
+
+\[ f_c = ReLU \left( C \cdot \begin{bmatrix} x_i \\ z_i \end{bmatrix} \right) \]
+
+$f_b, f_c$ - однослойные сетки.
+
+\subsubsection*{Метрики ранжирования}
+
+Почему ROC-AUC плохо ?
+
+
+Пусть у нас есть только один релевантный документ. Всего $n$ документов, релевантный после ранжирования оказался на позиции $r$.
+
+\includegraphics[width=14cm]{metrics.png}
+
+ROC-AUC не учитывает то, насколько маленькое $r$, а как будто надо.
 
 \end{document}
