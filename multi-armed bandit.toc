@@ -1,0 +1,5 @@
+\babel@toc {russian}{}\relax 
+\beamer@sectionintoc {1}{Постановка задачи}{2}{0}{1}
+\beamer@sectionintoc {3}{Ближе к задачке}{8}{0}{2}
+\beamer@subsectionintoc {3}{1}{Две ручки}{11}{0}{2}
+\beamer@subsectionintoc {3}{2}{Исходная постановка}{18}{0}{2}
