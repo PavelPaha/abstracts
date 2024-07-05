@@ -3,3 +3,4 @@
 \beamer@sectionintoc {3}{Ближе к задачке}{8}{0}{2}
 \beamer@subsectionintoc {3}{1}{Две ручки}{11}{0}{2}
 \beamer@subsectionintoc {3}{2}{Исходная постановка}{18}{0}{2}
+\beamer@subsectionintoc {3}{3}{Стратегии}{19}{0}{2}

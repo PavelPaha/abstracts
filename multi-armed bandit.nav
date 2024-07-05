@@ -47,8 +47,14 @@
 \headcommand {\beamer@subsectionentry {0}{3}{2}{18}{Исходная постановка}}
 \headcommand {\slideentry {3}{2}{1}{18/18}{Исходная постановка}{0}}
 \headcommand {\beamer@framepages {18}{18}}
-\headcommand {\beamer@partpages {1}{18}}
 \headcommand {\beamer@subsectionpages {18}{18}}
-\headcommand {\beamer@sectionpages {8}{18}}
-\headcommand {\beamer@documentpages {18}}
-\headcommand {\gdef \inserttotalframenumber {18}}
+\headcommand {\beamer@subsectionentry {0}{3}{3}{19}{Стратегии}}
+\headcommand {\slideentry {3}{3}{1}{19/19}{Стратегии}{0}}
+\headcommand {\beamer@framepages {19}{19}}
+\headcommand {\slideentry {3}{3}{2}{20/20}{Стратегии}{0}}
+\headcommand {\beamer@framepages {20}{20}}
+\headcommand {\beamer@partpages {1}{20}}
+\headcommand {\beamer@subsectionpages {19}{20}}
+\headcommand {\beamer@sectionpages {8}{20}}
+\headcommand {\beamer@documentpages {20}}
+\headcommand {\gdef \inserttotalframenumber {20}}
